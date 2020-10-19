@@ -7,6 +7,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class WypozyczalniaApplication {
 
     public static void main(String[] args) {
+
+        int numberOfCars;
         SpringApplication.run(WypozyczalniaApplication.class, args);
     }
 
