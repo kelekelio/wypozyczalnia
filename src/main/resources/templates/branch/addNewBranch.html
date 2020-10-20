@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add New Branch</title>
+</head>
+<body>
+<div th:align="center">
+    <h1>Add New Branch</h1>
+    <br><br>
+    <form action="#" th:action="@{/saveB}" th:object="${branch}" method="post">
+        <table border="0"; cellpadding="10">
+            <tr>
+                <td>Town</td>
+                <td><input type="text" th:field="*{town}"/></td>
+            </tr>
+            <tr>
+                <td>House number</td>
+                <td><input type="text" th:field="*{houseNo}"/></td>
+            </tr>
+            <tr>
+                <td>Street</td>
+                <td><input type="text" th:field="*{street}"/></td>
+            </tr>
+            <tr>
+                <td>Post code</td>
+                <td><input type="text" th:field="*{postCode}"/></td>
+            </tr>
+            <tr>
+                <td colspan="2"><button type="submit">Save</button> </td>
+            </tr>
+        </table>
+
+    </form>
+</div>
+
+</body>
+</html>
