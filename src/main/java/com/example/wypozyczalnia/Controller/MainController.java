@@ -15,6 +15,9 @@ public class MainController {
         return "index";
     }
 
+
+
+    //test pages
     @RequestMapping(value = "/index-2", method = RequestMethod.GET)
     public String index2b() {
         return "index-2";
@@ -24,4 +27,30 @@ public class MainController {
     public String index2() {
         return "index2";
     }
+
+    @RequestMapping(value = "/app-profile", method = RequestMethod.GET)
+    public String appProfile() {
+        return "test/app-profile";
+    }
+
+    @RequestMapping(value = "/email-compose", method = RequestMethod.GET)
+    public String emailCompose() {
+        return "test/email-compose";
+    }
+
+    @RequestMapping(value = "/email-inbox", method = RequestMethod.GET)
+    public String emailInbox() {
+        return "test/email-inbox";
+    }
+
+    @RequestMapping(value = "/email-read", method = RequestMethod.GET)
+    public String emailRead() {
+        return "test/email-read";
+    }
+
+    @RequestMapping(value = "/app-calender", method = RequestMethod.GET)
+    public String appCalender() {
+        return "test/app-calender";
+    }
+
 }

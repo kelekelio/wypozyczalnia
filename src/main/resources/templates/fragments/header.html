@@ -8,10 +8,10 @@
 <body>
 <div th:fragment="header">
 <div class="nav-header" >
-    <a href="index-2.html" class="brand-logo">
-        <img class="logo-abbr" src="images/logo.png" alt="">
-        <img class="logo-compact" src="images/logo-text.png" alt="">
-        <img class="brand-title" src="images/logo-text.png" alt="">
+    <a href="/" th:href="@{/}" class="brand-logo">
+        <img class="logo-abbr" src="images/logo.png" alt="" th:href="@{/images/logo.png}">
+        <img class="logo-compact" src="images/logo-text.png" alt="" th:href="@{/images/logo-text.png}">
+        <img class="brand-title" src="images/logo-text.png" alt="" th:href="@{/images/logo-text.png}">
     </a>
 
     <div class="nav-control">

@@ -21,15 +21,15 @@
             <li><a class="has-arrow" href="javascript:void()" aria-expanded="false"><i
                     class="icon icon-app-store"></i><span class="nav-text">Apps</span></a>
                 <ul aria-expanded="false">
-                    <li><a href="test/app-profile.html">Profile</a></li>
+                    <li><a href="test/app-profile.html" th:href="@{/app-profile}" >Profile</a></li>
                     <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">Email</a>
                         <ul aria-expanded="false">
-                            <li><a href="test/email-compose.html">Compose</a></li>
-                            <li><a href="test/email-inbox.html">Inbox</a></li>
-                            <li><a href="test/email-read.html">Read</a></li>
+                            <li><a href="test/email-compose.html" th:href="@{/email-compose}">Compose</a></li>
+                            <li><a href="test/email-inbox.html" th:href="@{/email-inbox}">Inbox</a></li>
+                            <li><a href="test/email-read.html" th:href="@{/email-read}">Read</a></li>
                         </ul>
                     </li>
-                    <li><a href="test/app-calender.html">Calendar</a></li>
+                    <li><a href="test/app-calender.html" th:href="@{/app-calender}" >Calendar</a></li>
                 </ul>
             </li>
             <li><a class="has-arrow" href="javascript:void()" aria-expanded="false"><i
