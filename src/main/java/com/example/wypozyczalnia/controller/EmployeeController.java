@@ -15,7 +15,7 @@ import java.util.List;
 public class EmployeeController {
     @Autowired
     private EmployeeService employeeService;
-    @RequestMapping("employee/employeeList")
+    @RequestMapping("/employeeList")
     public String viewEmployeeList(Model model) {
         List<Employee> employeeList = employeeService.listAll();
         model.addAttribute("employeeList", employeeList);
