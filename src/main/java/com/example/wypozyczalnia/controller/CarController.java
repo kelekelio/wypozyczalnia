@@ -1,7 +1,6 @@
-package com.example.wypozyczalnia.Controller;
+package com.example.wypozyczalnia.controller;
 
 import com.example.wypozyczalnia.model.Car;
-import com.example.wypozyczalnia.model.Employee;
 import com.example.wypozyczalnia.service.CarService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

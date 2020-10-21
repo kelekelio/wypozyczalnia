@@ -1,4 +1,4 @@
-package com.example.wypozyczalnia.Controller;
+package com.example.wypozyczalnia.controller;
 
 import com.example.wypozyczalnia.model.Employee;
 import com.example.wypozyczalnia.service.EmployeeService;

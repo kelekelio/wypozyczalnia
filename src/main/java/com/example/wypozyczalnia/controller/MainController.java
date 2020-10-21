@@ -1,4 +1,4 @@
-package com.example.wypozyczalnia.Controller;
+package com.example.wypozyczalnia.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
