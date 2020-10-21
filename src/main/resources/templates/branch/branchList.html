@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>List of branches</title>
+</head>
+<body>
+<div th:align="center">
+    <h1>List of branches</h1>
+    <br><br>
+    <a href="addNewBranch">Add New Branch</a>
+    <br><br>
+    <table border="1" ; cellpadding="10">
+        <thead>
+        <tr>
+            <th>Branch ID</th>
+            <th>Town</th>
+            <th>House number</th>
+            <th>Street</th>
+            <th>Post code</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        <tr th:each="branch : ${branchList}">
+            <td th:text="${branch.id}">Branch ID</td>
+            <td th:text="${branch.town}">First name</td>
+            <td th:text="${branch.houseNo}">House number</td>
+            <td th:text="${branch.street}">Street</td>
+            <td th:text="${branch.postCode}">Post code</td>
+        </tr>
+        </tbody>
+
+    </table>
+</div>
+
+</body>
+</html>
