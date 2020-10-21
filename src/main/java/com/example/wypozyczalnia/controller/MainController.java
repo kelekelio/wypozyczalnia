@@ -15,6 +15,11 @@ public class MainController {
         return "index";
     }
 
+    @RequestMapping(value = {"/logout"}, method = RequestMethod.GET)
+    public String logout() {
+        return "index";
+    }
+
 
 
     //test pages
