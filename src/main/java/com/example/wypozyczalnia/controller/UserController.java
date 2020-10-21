@@ -1,5 +1,6 @@
 package com.example.wypozyczalnia.controller;
 
+import com.example.wypozyczalnia.model.Role;
 import com.example.wypozyczalnia.model.User;
 import com.example.wypozyczalnia.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +11,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.validation.Valid;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * @author Grzegorz Nowakowski
