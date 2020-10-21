@@ -13,6 +13,11 @@ public class Employee {
     private String position;
     private String branch;
 
+//    @ManyToOne(fetch = FetchType.EAGER)
+//    @JoinColumn(name = "id" )
+//    //Repeated column in mapping for entity: com.example.wypozyczalnia.model.Employee column: id (should be mapped with insert="false" update="false")
+//    private Branch branch;
+
     public Employee() {
     }
 
@@ -36,31 +41,31 @@ public class Employee {
         return firstName;
     }
 
-    public void setFirstName(String imie) {
-        this.firstName = imie;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
     }
 
     public String getLastName() {
         return lastName;
     }
 
-    public void setLastName(String nazwisko) {
-        this.lastName = nazwisko;
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
     public String getPosition() {
         return position;
     }
 
-    public void setPosition(String stanowisko) {
-        this.position = stanowisko;
+    public void setPosition(String position) {
+        this.position = position;
     }
 
     public String getBranch() {
         return branch;
     }
 
-    public void setBranch(String oddzial) {
-        this.branch = oddzial;
+    public void setBranch(String branch) {
+        this.branch = branch;
     }
 }

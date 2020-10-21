@@ -1,6 +1,8 @@
 package com.example.wypozyczalnia.model;
 
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table
@@ -12,6 +14,9 @@ public class Branch {
     private Integer houseNo;
     private String street;
     private String postCode;
+
+//    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy =  "branch")
+//    private Set<Employee> employees = new HashSet<Employee>();
 
     public Branch() {
     }
