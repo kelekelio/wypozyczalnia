@@ -30,6 +30,6 @@ public class EmployeeController {
     @RequestMapping(value = "/save", method = RequestMethod.POST)
     public String saveEmployee(@ModelAttribute("employee") Employee employee) {
         employeeService.save(employee);
-        return "redirect:employee/employeeList";
+        return "redirect:/employeeList";
     }
 }
