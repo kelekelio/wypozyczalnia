@@ -57,6 +57,12 @@
                             <div>
                                 <a href="/employee/addNewEmployee" class="btn btn-primary">Add New Employee</a>
                             </div>
+                            <div>
+                                <a href="/employee/addNewEmployee" class="btn btn-primary">Add New Employee</a>
+                            </div>
+                            <div>
+                                <a href="/employee/updateEmployee2" class="btn btn-primary">Update Employee2</a>
+                            </div>
 
                         </div>
                     </div>
@@ -96,7 +102,7 @@
                                             <td th:text="${employee.lastName}">Last name</td>
                                             <td th:text="${employee.position}">Position</td>
                                             <td th:text="${employee.branch}">Branch</td>
-                                            <td ><a th:href="@{/employee/showUpdateEmployeeForm/{id}(id=${employee.id})}"  class="badge badge-warning">Update</a><span>
+                                            <td ><a th:href="@{/showUpdateEmployeeForm/{id}(id=${employee.id})}"  class="badge badge-warning">Update</a><span>
                                             </span><a th:href="@{/deleteEmployee{id}(id=${employee.id})}"  class="badge badge-danger">Delete</a></td>
                                         </tr>
                                         </tbody>

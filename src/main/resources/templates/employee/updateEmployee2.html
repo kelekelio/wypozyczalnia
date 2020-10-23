@@ -1,20 +1,15 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org"
-      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
-      layout:decorate="~{layouts/layout}">
-      lang="en">
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Update Employee</title>
+    <title>Update Employee2</title>
 </head>
 <body>
 <div th:align="center">
-    <h1>Update Employee</h1>
+    <h1>Update Employee2</h1>
     <br><br>
-    <form action="#" th:action="@{/saveUpdate}" th:object="${com.example.wypozyczalnia.model.Employee}" method="post">
+    <form action="#" th:action="@{/save2}" th:object="${employee2 }" method="post">
         <table border="0"; cellpadding="10">
-            <input type="hidden" th:field="*{id}"/>
             <tr>
                 <td>First name</td>
                 <td><input type="text" th:field="*{firstName}"/></td>
