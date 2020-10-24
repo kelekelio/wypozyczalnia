@@ -81,6 +81,24 @@
                                 <h4 class="card-title">Datatable</h4>
                             </div>
                             <div class="card-body">
+
+                                <div class="form-row">
+                                    <div class="form-group col-md-3">
+                                        <select id="single-select" class="branchSelector" >
+                                            <option value="">Select Branch...</option>
+                                            <option th:each="bran : ${branchList}"
+                                                    th:value="${bran.id}"
+                                                    th:text="${bran.id + ': ' + bran.town + ', ' + bran.street + ' ' + bran.houseNo + ', ' + bran.postCode }"
+                                            ></option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="form-row">
+                                    <div class="form-group col-md-12"></div>
+                                </div>
+
+
                                 <div class="table-responsive">
                                     <table id="example" class="display" style="width:100%">
                                         <thead>
@@ -95,6 +113,7 @@
                                             <th>Status</th>
                                             <th>Available</th>
                                             <th>Kwota</th>
+                                            <th>Location</th>
 
                                             <th sec:authorize="hasAnyAuthority('ADMIN', 'EMPL', 'MANAGER')">Action</th>
                                         </tr>
@@ -111,6 +130,7 @@
                                             <td th:text="${car.status}"></td>
                                             <td th:text="${car.available}"></td>
                                             <td th:text="${car.price}"></td>
+                                            <td th:text="${car.branch.id}"></td>
                                             <td sec:authorize="hasAnyAuthority('ADMIN', 'EMPL', 'MANAGER')">
                                                 <a href="#" th:href="@{/car/addCar/{id}(id=${car.id})}">
                                                     <button type="button" class="btn btn-rounded btn-warning"><i class="fa fa-edit"></i></button>
@@ -149,6 +169,7 @@
                                             <th>Status</th>
                                             <th>Available</th>
                                             <th>Kwota</th>
+                                            <th>Location</th>
                                             <th sec:authorize="hasAnyAuthority('ADMIN', 'EMPL', 'MANAGER')">Action</th>
                                         </tr>
                                         </tfoot>

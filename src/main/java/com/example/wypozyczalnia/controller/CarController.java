@@ -50,6 +50,9 @@ public class CarController {
         List<Car> carList = carService.listAll();
         model.addAttribute("carList", carList);
 
+        List<Branch> branchList = branchService.listAll();
+        model.addAttribute("branchList", branchList);
+
 
         return "car/carList";
     }

@@ -48,6 +48,10 @@ let dataSet = [
            $(row).addClass('selected')
         } 
     });
+
+    $('.branchSelector').on('change', function () {
+        table.columns(10).search( this.value ).draw();
+    } );
       
     table.on('click', 'tbody tr', function() {
     var $row = table.row(this).nodes().to$();
