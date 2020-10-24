@@ -39,8 +39,8 @@ public class EmployeeController {
     }
     @RequestMapping("employee/updateEmployee")
     public String updateEmployeeForm(Model model) {
-        Employee employee = new Employee();
-        model.addAttribute("employee", employee);
+        Employee employeeUpdate = new Employee();
+        model.addAttribute("employeeUpdate", employeeUpdate);
         return "employee/updateEmployee";
     }
 
@@ -63,14 +63,14 @@ public class EmployeeController {
 
     @RequestMapping({"/showUpdateEmployeeForm/{id}"})
     public RedirectView showUpdateEmployeeForm(@PathVariable(value = "id") long id, Model model) {
-        Employee employee = employeeService.get(id);
-        model.addAttribute("employee", employee);
+        Employee employeeUpdate = employeeService.get(id);
+        model.addAttribute("employeeUpdate", employeeUpdate);
         return new RedirectView("updateEmployee");
     }
 
-    @RequestMapping({"/employee/employeeList/{id}"})
-    public String deleteEmployee(Model model, @PathVariable("id") Long id) {
-        employeeService.delete(id);
+    @GetMapping({"/deleteEmployee/{id}"})
+    public String deleteEmployee(@PathVariable("id") long id) {
+        employeeService.deleteEmployee(id);
         return "redirect:/employeeList";
     }
 }
