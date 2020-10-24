@@ -7,7 +7,7 @@
 
 
 <head th:replace="fragments/head :: head(~{this :: title})">
-    <title>Nazwa Firmy - Lista Samochodów</title>
+    <title>Company name - List of cars</title>
 </head>
 
 
@@ -52,8 +52,11 @@
                 <div class="row page-titles mx-0">
                     <div class="col-sm-6 p-md-0">
                         <div class="welcome-text">
-                            <h4>Hi, welcome back!</h4>
+                            <h4>List of cars</h4>
                             <span class="ml-1">Datatable</span>
+                            <div>
+                                <a href="/car/addNewCar" class="btn btn-primary">Add New Car</a>
+                            </div>
                         </div>
                     </div>
                     <div class="col-sm-6 p-md-0 justify-content-sm-end mt-2 mt-sm-0 d-flex">
@@ -78,15 +81,15 @@
                                         <thead>
                                         <tr>
                                             <th>#</th>
-                                            <th>Marka</th>
+                                            <th>Make</th>
                                             <th>Model</th>
-                                            <th>Typ Nadwozia</th>
-                                            <th>Rocznik</th>
-                                            <th>Kolor</th>
-                                            <th>Przebieg</th>
+                                            <th>Body</th>
+                                            <th>Year</th>
+                                            <th>Color</th>
+                                            <th>Millage</th>
                                             <th>Status</th>
-                                            <th>Niedostępny</th>
-                                            <th>Kwota</th>
+                                            <th>Available</th>
+                                            <th>Price</th>
                                         </tr>
                                         </thead>
                                         <tbody>

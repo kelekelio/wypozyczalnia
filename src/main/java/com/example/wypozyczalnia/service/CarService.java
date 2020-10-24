@@ -1,6 +1,7 @@
 package com.example.wypozyczalnia.service;
 
 import com.example.wypozyczalnia.model.Car;
+import com.example.wypozyczalnia.model.Employee;
 import com.example.wypozyczalnia.repository.CarRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -22,5 +23,8 @@ public class CarService {
 
     public List<Car> listAll() {
         return carRepository.findAll();
+    }
+    public void save(Car car) {
+        carRepository.save(car);
     }
 }
