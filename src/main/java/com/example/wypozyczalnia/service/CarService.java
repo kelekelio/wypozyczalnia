@@ -4,6 +4,7 @@ import com.example.wypozyczalnia.model.Car;
 import com.example.wypozyczalnia.model.Employee;
 import com.example.wypozyczalnia.repository.CarRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -33,7 +34,12 @@ public class CarService {
         carRepository.deleteById(id);
     }
 
+
     public List<Car> listAll() {
         return carRepository.findAll();
+    }
+
+    public List<Car> listAllAvailableCars() {
+        return carRepository.findAllAvailableCars();
     }
 }

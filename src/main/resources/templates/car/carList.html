@@ -113,11 +113,9 @@
                                             <td th:text="${car.price}"></td>
                                             <td sec:authorize="hasAnyAuthority('ADMIN', 'EMPL', 'MANAGER')">
                                                 <a href="#" th:href="@{/car/addCar/{id}(id=${car.id})}">
-                                                    <button type="button" class="btn btn-rounded btn-warning"><i class="fa fa-warning"></i></button>
+                                                    <button type="button" class="btn btn-rounded btn-warning"><i class="fa fa-edit"></i></button>
                                                 </a>
-                                                <button type="button" class="btn btn-rounded btn-danger" data-toggle="modal" data-target="#deleteModal">
-                                                    <i class="fa fa-trash"></i>
-                                                </button>
+                                                <button type="button" class="btn btn-rounded btn-danger" data-toggle="modal" data-target="#deleteModal"><i class="fa fa-trash"></i></button>
                                                 <!-- delete modal -->
                                                 <div class="modal" id="deleteModal">
                                                     <div class="modal-dialog">

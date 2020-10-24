@@ -43,8 +43,9 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception{
         http.authorizeRequests()
                 .antMatchers("/index2", "/car/addCar/**", "/car/addCar").hasAnyAuthority("ADMIN", "EMPL", "MANAGER")
-                .antMatchers("/**").permitAll().anyRequest()
-                .authenticated().and().csrf().disable()
+                .antMatchers("/**").permitAll()
+                .anyRequest().authenticated()
+                .and().csrf().disable()
                 .formLogin().loginPage("/login").failureUrl("/login?error=true")
                 .defaultSuccessUrl("/")
                 .usernameParameter("email")

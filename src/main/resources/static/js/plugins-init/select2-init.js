@@ -51,7 +51,7 @@
   $(".js-data-example-ajax").select2({
       width: "100%",
       ajax: {
-        url: "https://api.github.com/search/repositories",
+        url: "https://aionpowerbook.com/aionpb/publicAPI/instanceDEV.php",
         dataType: 'json',
         delay: 250,
         data: function (params) {

@@ -1,6 +1,7 @@
 package com.example.wypozyczalnia.model;
 
 import javax.persistence.*;
+import java.util.Set;
 
 /**
  * @author Grzegorz Nowakowski
@@ -22,10 +23,15 @@ public class Car {
     private Double price;
 
 
+    @OneToOne(fetch= FetchType.LAZY)
+    @JoinColumn(name = "branch_id")
+    private Branch branch;
+
+
     public Car() {
     }
 
-    public Car(Long id, String make, String model, String body, Integer year, String color, Long millage, Integer status, Integer available, Double price) {
+    public Car(Long id, String make, String model, String body, Integer year, String color, Long millage, Integer status, Integer available, Double price, Branch branch) {
         this.id = id;
         this.make = make;
         this.model = model;
@@ -36,6 +42,7 @@ public class Car {
         this.status = status;
         this.available = available;
         this.price = price;
+        this.branch = branch;
     }
 
     public Long getId() {
@@ -116,5 +123,13 @@ public class Car {
 
     public void setPrice(Double price) {
         this.price = price;
+    }
+
+    public Branch getBranch() {
+        return branch;
+    }
+
+    public void setBranch(Branch branch) {
+        this.branch = branch;
     }
 }
