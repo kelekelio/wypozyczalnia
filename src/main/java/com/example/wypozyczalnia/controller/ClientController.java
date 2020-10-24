@@ -30,10 +30,6 @@ public class ClientController {
         return "client/addNewClient";
     }
 
-    @RequestMapping(value = "/save", method = RequestMethod.POST)
-    public String saveClient(@ModelAttribute("client") Client client) {
-        clientService.save(client);
-        return "redirect:client/clientList";
-    }
+
 
 }

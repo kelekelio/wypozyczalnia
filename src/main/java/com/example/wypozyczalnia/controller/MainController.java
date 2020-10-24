@@ -33,7 +33,7 @@ public class MainController {
         return "index1";
     }
 
-    @RequestMapping(value = "/index-2", method = RequestMethod.GET)
+    @RequestMapping(value = "/index-2")
     public String index2b() {
         return "index-2";
     }
@@ -308,6 +308,11 @@ public class MainController {
     @RequestMapping(value = "/page-lock-screen", method = RequestMethod.GET)
     public String pagelockscreen() {
         return "test/page-lock-screen";
+    }
+
+    @RequestMapping(value = "/icons", method = RequestMethod.GET)
+    public String icons() {
+        return "test/icons";
     }
 
 

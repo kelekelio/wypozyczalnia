@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+      layout:decorate="~{layouts/layout}">
+<html lang="en">
+
+
+<head th:replace="fragments/head :: head(~{this :: title})">
+    <title>Nazwa Firmy - Dodaj Samochód</title>
+</head>
+
+
+<body>
+
+    <!--*******************
+        Preloader start
+    ********************-->
+    <div th:replace="fragments/preloader :: preloader"></div>
+    <!--*******************
+        Preloader end
+    ********************-->
+
+
+    <!--**********************************
+        Main wrapper start
+    ***********************************-->
+    <div id="main-wrapper">
+
+        <!--**********************************
+            Nav header start
+        ***********************************-->
+        <div th:replace="fragments/header :: header"></div>
+        <!--**********************************
+            Header end ti-comment-alt
+        ***********************************-->
+
+        <!--**********************************
+            Sidebar start
+        ***********************************-->
+        <div th:replace="fragments/sidebar :: sidebar"></div>
+        <!--**********************************
+            Sidebar end
+        ***********************************-->
+
+        <!--**********************************
+            Content body start
+        ***********************************-->
+        <div class="content-body">
+            <div class="container-fluid">
+                <div class="row page-titles mx-0">
+                    <div class="col-sm-6 p-md-0">
+                        <div class="welcome-text">
+                            <h4>Hi, welcome back!</h4>
+                            <p class="mb-0">Your business dashboard template</p>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 p-md-0 justify-content-sm-end mt-2 mt-sm-0 d-flex">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
+                            <li class="breadcrumb-item active"><a href="javascript:void(0)">Components</a></li>
+                        </ol>
+                    </div>
+                </div>
+
+                <form th:action="@{/car/addCar}" th:object="${car}" method="post">
+                    <input type="hidden" th:field="*{id}"/>
+                <div class="card">
+                    <div class="card-header">
+                        <h4 class="card-title">Basic Details</h4>
+                    </div>
+                    <div class="card-body">
+                        <div class="basic-form">
+
+
+                                <div class="form-row">
+                                    <div class="form-group col-md-6">
+                                        <label>Make</label>
+                                        <input type="text" class="form-control" placeholder="Peugeot" th:field="*{make}">
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label>Model</label>
+                                        <input type="text" class="form-control" placeholder="202" th:field="*{model}">
+                                    </div>
+                                </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="card">
+                        <div class="card-header">
+                            <h4 class="card-title">Technical</h4>
+                        </div>
+                        <div class="card-body">
+
+                            <div class="form-row">
+                                <div class="form-group col-md-6">
+                                    <label>Body</label>
+                                    <input type="text" class="form-control" placeholder="Body" th:field="*{body}">
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group col-md-2">
+                                    <label>Year</label>
+                                    <input type="number" class="form-control" placeholder="2020" value="2020" th:field="*{year}">
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group col-md-2">
+                                    <label>Milage</label>
+                                    <input type="number" class="form-control" placeholder="577644" th:field="*{millage}">
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group col-md-2">
+                                    <label>Color</label><br>
+                                    <input type="text" class="as_colorpicker form-control" placeholder="#000000" th:field="*{color}">
+                                </div>
+                            </div>
+                        </div>
+                </div>
+
+
+                <div class="card">
+                    <div class="card-header">
+                        <h4 class="card-title">Available</h4>
+                    </div>
+                    <div class="card-body">
+                        <fieldset class="form-group">
+                            <div class="row">
+                                <label class="col-form-label col-sm-2 pt-0">Can be rented?</label>
+                                <div class="col-sm-10">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="gridRadios" value="1" checked th:field="*{available}">
+                                        <label class="form-check-label">
+                                            Yes
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="gridRadios" value="0" th:field="*{available}">
+                                        <label class="form-check-label">
+                                            No
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </div>
+                </div>
+
+
+                <div class="card">
+                    <div class="card-header">
+                        <h4 class="card-title">Price</h4>
+                    </div>
+                    <div class="card-body">
+                        <div class="basic-form">
+                                <div class="form-row">
+                                    <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text">$</span>
+                                            <span class="input-group-text">0.00</span>
+                                        </div>
+                                        <input
+                                                type="text"
+                                                class="form-control"
+                                                th:field="*{price}"
+                                                onchange="this.value = this.value.replace(/,/g, '.')"
+                                        >
+                                    </div>
+                                </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <button type="submit" class="btn btn-success">Save <span class="btn-icon-right"><i
+                            class="fa fa-check"></i></span>
+                </button>
+                <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#deleteModal" th:if="*{id > 0}">
+                        Delete
+                </button>
+
+                </form>
+
+                <!-- delete modal -->
+                <div class="modal" id="deleteModal">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h4 class="modal-title" >Are you sure you want to delete car #<span th:text="${car.id}"></span>?</h4>
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            </div>
+                            <div class="modal-body">There is no turning back</div>
+                            <div class="modal-footer" >
+                                <form th:action="@{/car/deleteCar/{id}(id=${car.id})}" th:object="${car}" method="post">
+                                    <input type="submit" class="btn btn-danger pull-left" value="Yes"/>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- delete modal -->
+
+
+            </div>
+        </div>
+        <!--**********************************
+            Content body end
+        ***********************************-->
+
+
+        <!--**********************************
+            Footer start
+        ***********************************-->
+        <div th:replace="fragments/footer :: footer"></div>
+        <!--**********************************
+            Footer end
+        ***********************************-->
+
+        <!--**********************************
+           Support ticket button start
+        ***********************************-->
+
+        <!--**********************************
+           Support ticket button end
+        ***********************************-->
+
+
+    </div>
+    <!--**********************************
+        Main wrapper end
+    ***********************************-->
+
+    <!--**********************************
+        Scripts
+    ***********************************-->
+    <!-- Required vendors -->
+    <div th:replace="fragments/js :: js"></div>
+
+</body>
+
+
+</html>
