@@ -19,6 +19,9 @@ public class EmployeeService {
     public void save(Employee employee) {
         employeeRepository.save(employee);
     }
+    public void saveUpdateEmployee(Employee employee) {
+        employeeRepository.save(employee);
+    }
 
     public Employee get(Long id) {
 
@@ -33,4 +36,5 @@ public class EmployeeService {
 
         this.employeeRepository = employeeRepository;
     }
+
 }

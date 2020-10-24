@@ -23,6 +23,16 @@ public class MainController {
 
 
     //test pages
+    @RequestMapping(value = "/empty", method = RequestMethod.GET)
+    public String empty() {
+        return "empty";
+    }
+
+    @RequestMapping(value = "/index1", method = RequestMethod.GET)
+    public String index1() {
+        return "index1";
+    }
+
     @RequestMapping(value = "/index-2", method = RequestMethod.GET)
     public String index2b() {
         return "index-2";

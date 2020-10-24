@@ -1,38 +1,164 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>List of branches</title>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+      layout:decorate="~{layouts/layout}">
+<html lang="en">
+
+
+<head th:replace="fragments/head :: head(~{this :: title})">
+    <title>Branch List 2</title>
 </head>
+
+
 <body>
-<div th:align="center">
-    <h1>List of branches</h1>
-    <br><br>
-    <a href="addNewBranch">Add New Branch</a>
-    <br><br>
-    <table border="1" ; cellpadding="10">
-        <thead>
-        <tr>
-            <th>Branch ID</th>
-            <th>Town</th>
-            <th>House number</th>
-            <th>Street</th>
-            <th>Post code</th>
-        </tr>
-        </thead>
 
-        <tbody>
-        <tr th:each="branch : ${branchList}">
-            <td th:text="${branch.id}">Branch ID</td>
-            <td th:text="${branch.town}">First name</td>
-            <td th:text="${branch.houseNo}">House number</td>
-            <td th:text="${branch.street}">Street</td>
-            <td th:text="${branch.postCode}">Post code</td>
-        </tr>
-        </tbody>
+    <!--*******************
+        Preloader start
+    ********************-->
+    <div th:replace="fragments/preloader :: preloader"></div>
+    <!--*******************
+        Preloader end
+    ********************-->
 
-    </table>
-</div>
+
+    <!--**********************************
+        Main wrapper start
+    ***********************************-->
+    <div id="main-wrapper">
+
+        <!--**********************************
+            Nav header start
+        ***********************************-->
+        <div th:replace="fragments/header :: header"></div>
+        <!--**********************************
+            Header end ti-comment-alt
+        ***********************************-->
+
+        <!--**********************************
+            Sidebar start
+        ***********************************-->
+        <div th:replace="fragments/sidebar :: sidebar"></div>
+        <!--**********************************
+            Sidebar end
+        ***********************************-->
+
+        <!--**********************************
+            Content body start
+        ***********************************-->
+        <div class="content-body">
+            <!-- row -->
+            <div class="container-fluid">
+                <div class="row page-titles mx-0">
+                    <div class="col-sm-6 p-md-0">
+                        <div class="welcome-text">
+                            <h4>List of branches</h4>
+                            <span class="ml-1">Datatable</span>
+                            <div>
+                                <a href="/branch/addNewBranch" class="btn btn-primary">Add New Branch</a>
+                            </div>
+                            <div>
+                                <a href="/employee/addNewEmployee" class="btn btn-primary">Add New Employee</a>
+                            </div>
+                            <div>
+                                <a href="/employee/updateEmployee2" class="btn btn-primary">Update Employee2</a>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="col-sm-6 p-md-0 justify-content-sm-end mt-2 mt-sm-0 d-flex">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="javascript:void(0)">Table</a></li>
+                            <li class="breadcrumb-item active"><a href="javascript:void(0)">Datatable</a></li>
+                        </ol>
+                    </div>
+                </div>
+
+
+
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h4 class="card-title">Datatable</h4>
+                            </div>
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table id="example2" class="display" style="width:100%">
+                                        <thead>
+                                        <tr>
+                                            <th>Branch ID</th>
+                                            <th>Town</th>
+                                            <th>House number</th>
+                                            <th>Street</th>
+                                            <th>Post code</th>
+                                            <th>Action</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr th:each="branch : ${branchList}">
+                                            <td th:text="${branch.id}">Branch ID</td>
+                                            <td th:text="${branch.town}">Town</td>
+                                            <td th:text="${branch.houseNo}">House number</td>
+                                            <td th:text="${branch.street}">Street</td>
+                                            <td th:text="${branch.postCode}">Post code</td>
+                                            <td ><a th:href="@{/showUpdateBranchForm/{id}(id=${branch.id})}"  class="badge badge-warning">Update</a><span>
+                                            </span><a th:href="@{/deleteBranch{id}(id=${branch.id})}"  class="badge badge-danger">Delete</a></td>
+                                        </tr>
+                                        </tbody>
+                                        <tfoot>
+                                        <tr>
+                                            <th>Branch ID</th>
+                                            <th>Town</th>
+                                            <th>House number</th>
+                                            <th>Street</th>
+                                            <th>Post code</th>
+                                            <th>Action</th>
+                                        </tr>
+                                        </tfoot>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <!--**********************************
+            Content body end
+        ***********************************-->
+
+
+        <!--**********************************
+            Footer start
+        ***********************************-->
+        <div th:replace="fragments/footer :: footer"></div>
+        <!--**********************************
+            Footer end
+        ***********************************-->
+
+        <!--**********************************
+           Support ticket button start
+        ***********************************-->
+
+        <!--**********************************
+           Support ticket button end
+        ***********************************-->
+
+
+    </div>
+    <!--**********************************
+        Main wrapper end
+    ***********************************-->
+
+    <!--**********************************
+        Scripts
+    ***********************************-->
+    <!-- Required vendors -->
+    <div th:replace="fragments/js :: js"></div>
 
 </body>
+
+
 </html>
