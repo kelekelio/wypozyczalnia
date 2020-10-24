@@ -115,7 +115,7 @@
                                             <th>Kwota</th>
                                             <th>Location</th>
 
-                                            <th sec:authorize="hasAnyAuthority('ADMIN', 'EMPL', 'MANAGER')">Action</th>
+                                            <th sec:authorize="hasAnyAuthority('EMPL')">Action</th>
                                         </tr>
                                         </thead>
                                         <tbody>
@@ -131,7 +131,7 @@
                                             <td th:text="${car.available}"></td>
                                             <td th:text="${car.price}"></td>
                                             <td th:text="${car.branch.id}"></td>
-                                            <td sec:authorize="hasAnyAuthority('ADMIN', 'EMPL', 'MANAGER')">
+                                            <td sec:authorize="hasAnyAuthority('EMPL')">
                                                 <a href="#" th:href="@{/car/addCar/{id}(id=${car.id})}">
                                                     <button type="button" class="btn btn-rounded btn-warning"><i class="fa fa-edit"></i></button>
                                                 </a>
@@ -170,13 +170,15 @@
                                             <th>Available</th>
                                             <th>Kwota</th>
                                             <th>Location</th>
-                                            <th sec:authorize="hasAnyAuthority('ADMIN', 'EMPL', 'MANAGER')">Action</th>
+                                            <th sec:authorize="hasAnyAuthority('EMPL')">Action</th>
                                         </tr>
                                         </tfoot>
                                     </table>
                                 </div>
                             </div>
                         </div>
+
+
                         <div class="col-12" sec:authorize="hasAnyAuthority('ADMIN', 'MANAGER')">
                             <a href="/car/addCar" th:href="@{/car/addCar}"><button type="button" class="btn btn-rounded btn-info"><span class="btn-icon-left text-info"><i class="fa fa-plus color-info"></i>
                                     </span>Add</button></a>

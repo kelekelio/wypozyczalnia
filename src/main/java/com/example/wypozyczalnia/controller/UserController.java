@@ -2,16 +2,20 @@ package com.example.wypozyczalnia.controller;
 
 import com.example.wypozyczalnia.model.Role;
 import com.example.wypozyczalnia.model.User;
+import com.example.wypozyczalnia.repository.RoleRespository;
 import com.example.wypozyczalnia.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.validation.Valid;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 /**
@@ -59,5 +63,16 @@ public class UserController {
         }
 
         return model;
+    }
+
+    @RequestMapping({"/profile/{id}"})
+    public String updateProfile(@PathVariable(value = "id") long id, Model model) {
+
+
+
+        User user = userService.findUserById(id);
+        model.addAttribute("user", user);
+
+        return "user/profile";
     }
 }
