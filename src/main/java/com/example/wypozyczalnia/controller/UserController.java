@@ -1,17 +1,22 @@
 package com.example.wypozyczalnia.controller;
 
+import com.example.wypozyczalnia.model.Branch;
+import com.example.wypozyczalnia.model.Car;
 import com.example.wypozyczalnia.model.Role;
 import com.example.wypozyczalnia.model.User;
 import com.example.wypozyczalnia.repository.RoleRespository;
 import com.example.wypozyczalnia.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.view.RedirectView;
 
 import javax.validation.Valid;
 import java.util.HashSet;
@@ -75,4 +80,28 @@ public class UserController {
 
         return "user/profile";
     }
+
+
+    @RequestMapping("/userList")
+    public String viewUserList(Model model) {
+
+        List<User> userList = userService.listAll();
+        model.addAttribute("userList", userList);
+
+        return "user/userList";
+    }
+
+    @RequestMapping({"/deleteUser/{id}"})
+    public RedirectView deleteUser(Model model, @PathVariable("id") Long id) {
+        userService.delete(id);
+        return new RedirectView("/userList");
+    }
+
+    @RequestMapping(value = {"/updateUser"}, method = RequestMethod.POST)
+    public RedirectView saveUpdateUser(@ModelAttribute User user) {
+        userService.saveUser(user);
+        return new RedirectView("/profile/" + user.getId());
+    }
+
+
 }

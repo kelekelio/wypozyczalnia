@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.Arrays;
 import java.util.HashSet;
+import java.util.List;
 
 /**
  * @author Grzegorz Nowakowski
@@ -33,15 +34,30 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void saveUser(User user) {
+
         user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
         user.setActive(1);
         Role userRole = roleRespository.findByRole("USER");
+        if (userRole == null) {
+            roleRespository.save(new Role(1L, "USER"));
+            userRole = roleRespository.findByRole("USER");
+        }
         user.setRoles(new HashSet<Role>(Arrays.asList(userRole)));
         userRepository.save(user);
     }
 
     public User findUserById(long id) {
         return userRepository.findById(id);
+    }
+
+    @Override
+    public List<User> listAll() {
+        return userRepository.findAll();
+    }
+
+    @Override
+    public void delete(long id) {
+        userRepository.deleteById(id);
     }
 
 }
