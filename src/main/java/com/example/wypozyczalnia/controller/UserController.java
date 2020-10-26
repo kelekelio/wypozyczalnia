@@ -84,15 +84,10 @@ public class UserController {
 
 
     @RequestMapping({"/profile"})
-    public String userProfile(Model model, @AuthenticationPrincipal User userDetails) {
+    public String userProfile(Model model, Principal principal) {
 
-
-
-        User userA = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-
-        long userid = userA.getId();
-
-        User user = userService.findUserById(userid);
+        String currentUser = principal.getName();
+        User user = userService.findUserByEmail(currentUser);
         model.addAttribute("user", user);
 
         return "user/profile";
