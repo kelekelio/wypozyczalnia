@@ -8,6 +8,8 @@ import com.example.wypozyczalnia.repository.RoleRespository;
 import com.example.wypozyczalnia.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -19,6 +21,7 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
 
 import javax.validation.Valid;
+import java.security.Principal;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -73,9 +76,23 @@ public class UserController {
     @RequestMapping({"/profile/{id}"})
     public String updateProfile(@PathVariable(value = "id") long id, Model model) {
 
-
-
         User user = userService.findUserById(id);
+        model.addAttribute("user", user);
+
+        return "user/profile";
+    }
+
+
+    @RequestMapping({"/profile"})
+    public String userProfile(Model model, @AuthenticationPrincipal User userDetails) {
+
+
+
+        User userA = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+
+        long userid = userA.getId();
+
+        User user = userService.findUserById(userid);
         model.addAttribute("user", user);
 
         return "user/profile";
@@ -102,6 +119,9 @@ public class UserController {
         userService.saveUser(user);
         return new RedirectView("/profile/" + user.getId());
     }
+
+
+
 
 
 }
