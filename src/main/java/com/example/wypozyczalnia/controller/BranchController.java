@@ -15,8 +15,8 @@ import java.util.List;
 public class BranchController {
 @Autowired
     private BranchService branchService;
-    @RequestMapping("branch/branchList")
-    public String viewBranchList2(Model model) {
+    @RequestMapping("branchList")
+    public String viewBranchList(Model model) {
         List<Branch> branchList = branchService.listAll();
         model.addAttribute("branchList", branchList);
         return "branch/branchList";
