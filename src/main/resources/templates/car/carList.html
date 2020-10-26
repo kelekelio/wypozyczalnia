@@ -113,7 +113,6 @@
                                             <th>Status</th>
                                             <th>Available</th>
                                             <th>Kwota</th>
-                                            <th>Location</th>
 
                                             <th sec:authorize="hasAnyAuthority('EMPL')">Action</th>
                                         </tr>
@@ -130,7 +129,6 @@
                                             <td th:text="${car.status}"></td>
                                             <td th:text="${car.available}"></td>
                                             <td th:text="${car.price}"></td>
-                                            <td th:text="${car.branch.id}"></td>
                                             <td sec:authorize="hasAnyAuthority('EMPL')">
                                                 <a href="#" th:href="@{/car/addCar/{id}(id=${car.id})}">
                                                     <button type="button" class="btn btn-rounded btn-warning"><i class="fa fa-edit"></i></button>
@@ -169,7 +167,6 @@
                                             <th>Status</th>
                                             <th>Available</th>
                                             <th>Kwota</th>
-                                            <th>Location</th>
                                             <th sec:authorize="hasAnyAuthority('EMPL')">Action</th>
                                         </tr>
                                         </tfoot>

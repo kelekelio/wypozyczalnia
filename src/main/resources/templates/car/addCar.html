@@ -161,13 +161,7 @@
                             <div class="form-row">
                                 <div class="form-group col-md-4">
                                     <label>Branch</label>
-                                    <select id="single-select" th:field="${car.branch.id}">
-                                        <option th:each="bran : ${branchList}"
-                                                th:value="${bran.id}"
-                                                th:text="${bran.id + ': ' + bran.town + ', ' + bran.street + ' ' + bran.houseNo + ', ' + bran.postCode }"
-
-                                        ></option>
-                                    </select>
+                                    <!-- Show at what branch the car is currently assigned to -->
                                 </div>
                             </div>
                         </div>
