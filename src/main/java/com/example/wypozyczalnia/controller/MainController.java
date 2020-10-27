@@ -23,6 +23,10 @@ public class MainController {
 
 
     //test pages
+    @RequestMapping(value = "/booking2", method = RequestMethod.GET)
+    public String location() {
+        return "booking2";
+    }
     @RequestMapping(value = "/empty", method = RequestMethod.GET)
     public String empty() {
         return "empty";

@@ -13,114 +13,120 @@
 
 <body>
 
-    <!--*******************
-        Preloader start
-    ********************-->
-    <div th:replace="fragments/preloader :: preloader"></div>
-    <!--*******************
-        Preloader end
-    ********************-->
+<!--*******************
+    Preloader start
+********************-->
+<div th:replace="fragments/preloader :: preloader"></div>
+<!--*******************
+    Preloader end
+********************-->
 
+
+<!--**********************************
+    Main wrapper start
+***********************************-->
+<div id="main-wrapper">
 
     <!--**********************************
-        Main wrapper start
+        Nav header start
     ***********************************-->
-    <div id="main-wrapper">
+    <div th:replace="fragments/header :: header"></div>
+    <!--**********************************
+        Header end ti-comment-alt
+    ***********************************-->
 
-        <!--**********************************
-            Nav header start
-        ***********************************-->
-        <div th:replace="fragments/header :: header"></div>
-        <!--**********************************
-            Header end ti-comment-alt
-        ***********************************-->
+    <!--**********************************
+        Sidebar start
+    ***********************************-->
+    <div th:replace="fragments/sidebar :: sidebar"></div>
+    <!--**********************************
+        Sidebar end
+    ***********************************-->
 
-        <!--**********************************
-            Sidebar start
-        ***********************************-->
-        <div th:replace="fragments/sidebar :: sidebar"></div>
-        <!--**********************************
-            Sidebar end
-        ***********************************-->
-
-        <!--**********************************
-            Content body start
-        ***********************************-->
-        <div class="content-body">
-            <!-- row -->
-            <div class="container-fluid">
+    <!--**********************************
+        Content body start
+    ***********************************-->
+    <div class="content-body">
+        <!-- row -->
+        <div class="container-fluid">
 
 
-                    <!--**********************************
-                            PUT CONTENT HERE
-                    ***********************************-->
+            <!--**********************************
+                    PUT CONTENT HERE
+            ***********************************-->
 
-                <!--****************************************************************************************************************************-->
-                <form action="#" th:action="@{/reservation}" th:object="${reservation}" method="post">
+            <!--****************************************************************************************************************************-->
+            <!--**********************************
+                        <form action="#" th:action="@{/reservation}" th:object="${???????????????????? }" method="post">
+                ***********************************-->
+            <form action="#" th:action="@{/booking}" th:object="${bookingForm}" method="post">
                 <div class="input-group mb-3">
                     <div class="input-group-prepend">
                         <label class="input-group-text" for="inputGroupSelect01">Pick-up location</label>
                     </div>
 
-                    <select class="custom-select" id="inputGroupSelect01">
+                    <select class="custom-select" id="inputGroupSelect01" name="branch.town">
 
                         <option selected>Choose...</option>
                         <tr th:each="branch: ${branchList}">
 
                             <option value="1">
-                                <td th:text="${branch.town}" /></a></option>
+                                <td th:text="${branch.town}"/>
+                                </a></option>
                         </tr>
 
                     </select>
                 </div>
                 <div>
-
-                    <input type="datetime-local" class="form-control" id="basic-ur" aria-describedby="basic-addon3">
-                    <input type="datetime-local" class="form-control" id="basic-url" aria-describedby="basic-addon3">
-                    Pick-up date
-                    <input type="datetime-local" >
-                    Drop-off date
-                    <input type="datetime-local" >
+                    <label>Pick-up date</label>
+                    <input type="datetime-local" value="${now}" th:name="from">
+                    <label>Drop-off date</label>
+                    <input type="datetime-local" th:name="to">
                 </div>
-                </form>
-            </div>
-                <!--**********************************
-                            END OF CONTENT
-                    ***********************************-->
-            </div>
+                <input class="btn btn-success pull-left" type="submit" value="NEXT" id="searchButton">
+            </form>
+            <!--**********************************
+                        </form>
+                ***********************************-->
+
         </div>
         <!--**********************************
-            Content body end
-        ***********************************-->
-
-
-        <!--**********************************
-            Footer start
-        ***********************************-->
-        <div th:replace="fragments/footer :: footer"></div>
-        <!--**********************************
-            Footer end
-        ***********************************-->
-
-        <!--**********************************
-           Support ticket button start
-        ***********************************-->
-
-        <!--**********************************
-           Support ticket button end
-        ***********************************-->
-
-
+                    END OF CONTENT
+            ***********************************-->
     </div>
-    <!--**********************************
-        Main wrapper end
-    ***********************************-->
+</div>
+<!--**********************************
+    Content body end
+***********************************-->
 
-    <!--**********************************
-        Scripts
-    ***********************************-->
-    <!-- Required vendors -->
-    <div th:replace="fragments/js :: js"></div>
+
+<!--**********************************
+    Footer start
+***********************************-->
+<div th:replace="fragments/footer :: footer"></div>
+<!--**********************************
+    Footer end
+***********************************-->
+
+<!--**********************************
+   Support ticket button start
+***********************************-->
+
+<!--**********************************
+   Support ticket button end
+***********************************-->
+
+
+</div>
+<!--**********************************
+    Main wrapper end
+***********************************-->
+
+<!--**********************************
+    Scripts
+***********************************-->
+<!-- Required vendors -->
+<div th:replace="fragments/js :: js"></div>
 
 </body>
 
