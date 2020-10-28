@@ -30,6 +30,6 @@ public class BranchController {
     @RequestMapping(value = "/saveB", method = RequestMethod.POST)
     public String saveBranch(@ModelAttribute("branch") Branch branch) {
         branchService.save(branch);
-        return "redirect:branch/branchList";
+        return "branch/branchList";
     }
 }

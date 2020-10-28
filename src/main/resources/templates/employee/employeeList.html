@@ -103,7 +103,7 @@
                                             <td th:text="${employee.position}">Position</td>
                                             <td th:text="${employee.branch}">Branch</td>
                                             <td ><a th:href="@{/showUpdateEmployeeForm/{id}(id=${employee.id})}"  class="badge badge-warning">Update</a><span>
-                                            </span><a th:href="@{/deleteEmployee{id}(id=${employee.id})}"  class="badge badge-danger">Delete</a></td>
+                                            </span><a th:href="@{/deleteEmployee/{id}(id=${employee.id})}"  class="badge badge-danger">Delete</a></td>
                                         </tr>
                                         </tbody>
                                         <tfoot>
