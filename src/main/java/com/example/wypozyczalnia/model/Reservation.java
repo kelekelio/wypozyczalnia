@@ -15,8 +15,8 @@ public class Reservation {
     private Long id;
     private LocalDate reservationDate;
     //private Client client;
-    private LocalDate from;
-    private LocalDate to;
+    private LocalDate fromDate;
+    private LocalDate toDate;
 
     private Double price;
     @ManyToMany
@@ -31,11 +31,11 @@ public class Reservation {
     public Reservation() {
     }
 
-    public Reservation(Long id, LocalDate reservationDate, LocalDate from, LocalDate to, Double price, Set<Branch> branches, Car car) {
+    public Reservation(Long id, LocalDate reservationDate, LocalDate fromDate, LocalDate toDate, Double price, Set<Branch> branches, Car car) {
         this.id = id;
         this.reservationDate = reservationDate;
-        this.from = from;
-        this.to = to;
+        this.fromDate = fromDate;
+        this.toDate = toDate;
         this.price = price;
         this.branches = branches;
         this.car = car;
@@ -57,20 +57,20 @@ public class Reservation {
         this.reservationDate = reservationDate;
     }
 
-    public LocalDate getFrom() {
-        return from;
+    public LocalDate getFromDate() {
+        return fromDate;
     }
 
-    public void setFrom(LocalDate from) {
-        this.from = from;
+    public void setFromDate(LocalDate fromDate) {
+        this.fromDate = fromDate;
     }
 
-    public LocalDate getTo() {
-        return to;
+    public LocalDate getToDate() {
+        return toDate;
     }
 
-    public void setTo(LocalDate to) {
-        this.to = to;
+    public void setToDate(LocalDate toDate) {
+        this.toDate = toDate;
     }
 
     public Double getPrice() {
