@@ -14,13 +14,16 @@ public class Branch {
     private Integer houseNo;
     private String street;
     private String postCode;
+    @ManyToMany
+    Set<Reservation> reservations;
+
 
 //    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy =  "branch")
 //    private Set<Employee> employees = new HashSet<Employee>();
 
-    @OneToMany(cascade=CascadeType.ALL)
-    @JoinTable(name="branch_car", joinColumns=@JoinColumn(name="car_id"), inverseJoinColumns=@JoinColumn(name="branch_id"))
-    private Set<Car> cars;
+//    @OneToMany(cascade=CascadeType.ALL)
+//    @JoinTable(name="branch_car", joinColumns=@JoinColumn(name="car_id"), inverseJoinColumns=@JoinColumn(name="branch_id"))
+//    private Set<Car> cars;
 
     public Branch() {
     }
@@ -73,11 +76,5 @@ public class Branch {
         this.postCode = postCode;
     }
 
-    public Set<Car> getCars() {
-        return cars;
-    }
 
-    public void setCars(Set<Car> cars) {
-        this.cars = cars;
-    }
 }

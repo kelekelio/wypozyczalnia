@@ -1,6 +1,7 @@
 package com.example.wypozyczalnia.model;
 
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.Set;
 
 /**
@@ -22,7 +23,8 @@ public class Car {
     private Integer available;
     private Double price;
 
-
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy = "car")
+    private Set<Reservation> reservations = new HashSet<Reservation>();
 
 
 
