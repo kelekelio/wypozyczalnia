@@ -79,9 +79,9 @@
                 </div>
                 <div>
                     <label>Pick-up date</label>
-                    <input type="datetime-local" value="${now}" th:name="from">
+                    <input type="datetime-local" value="" th:name="*{fromDate}">
                     <label>Drop-off date</label>
-                    <input type="datetime-local" th:name="to">
+                    <input type="datetime-local" th:name="*{toDate}">
                 </div>
                 <input class="btn btn-success pull-left" type="submit" value="NEXT" id="searchButton">
             </form>
