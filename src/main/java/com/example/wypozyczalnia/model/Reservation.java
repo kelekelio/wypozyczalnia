@@ -2,6 +2,7 @@ package com.example.wypozyczalnia.model;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Set;
 
 /**
@@ -13,11 +14,12 @@ public class Reservation {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    private LocalDate reservationDate;
+    private String reservationDate;
     //private Client client;
-    private LocalDate fromDate;
-    private LocalDate toDate;
-
+    private String fromDate;
+    private String toDate;
+    @OneToOne
+private Branch pickUpBrunch;
     private Double price;
     @ManyToMany
     Set<Branch> branches;
@@ -31,7 +33,7 @@ public class Reservation {
     public Reservation() {
     }
 
-    public Reservation(Long id, LocalDate reservationDate, LocalDate fromDate, LocalDate toDate, Double price, Set<Branch> branches, Car car) {
+    public Reservation(Long id, String reservationDate, String fromDate, String toDate, Double price, Set<Branch> branches, Car car) {
         this.id = id;
         this.reservationDate = reservationDate;
         this.fromDate = fromDate;
@@ -49,27 +51,27 @@ public class Reservation {
         this.id = id;
     }
 
-    public LocalDate getReservationDate() {
+    public String getReservationDate() {
         return reservationDate;
     }
 
-    public void setReservationDate(LocalDate reservationDate) {
+    public void setReservationDate(String reservationDate) {
         this.reservationDate = reservationDate;
     }
 
-    public LocalDate getFromDate() {
+    public String getFromDate() {
         return fromDate;
     }
 
-    public void setFromDate(LocalDate fromDate) {
+    public void setFromDate(String fromDate) {
         this.fromDate = fromDate;
     }
 
-    public LocalDate getToDate() {
+    public String getToDate() {
         return toDate;
     }
 
-    public void setToDate(LocalDate toDate) {
+    public void setToDate(String toDate) {
         this.toDate = toDate;
     }
 

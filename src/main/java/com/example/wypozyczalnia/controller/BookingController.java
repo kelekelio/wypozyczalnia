@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.view.RedirectView;
 
 import java.util.List;
+import java.util.Set;
 
 @Controller
 public class BookingController {
@@ -24,13 +25,15 @@ public class BookingController {
         List<Branch> branchList = branchService.listAll();
         model.addAttribute("branchList", branchList);
         model.addAttribute("bookingForm", new Reservation());
+
         return "booking/booking";
     }
 
     @PostMapping("/booking")
     public String bookingSubmit(@ModelAttribute("bookingForm") Reservation reservation) {
         reservationService.save(reservation);
-        return "booking/result";
+        return "booking/result";// tylko by dostac te 3 dane
+
     }
 //    @RequestMapping(value = {"/booking"}, method = RequestMethod.POST)
 //    public RedirectView postBooking(@ModelAttribute Reservation reservation) {

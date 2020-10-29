@@ -70,12 +70,18 @@
                         <option selected>Choose...</option>
                         <tr th:each="branch: ${branchList}">
 
-                            <option value="1">
-                                <td th:text="${branch.town}"/>
+                            <option value="branch.id">
+                                <td th:text="${branch.town}" />
+                                <!--**********************************
+                        <input type="hidden" th:value="" th:field="branch">
+                ***********************************-->
+
                                 </a></option>
+
                         </tr>
 
                     </select>
+
                 </div>
                 <div>
                     <label>Pick-up date</label>
