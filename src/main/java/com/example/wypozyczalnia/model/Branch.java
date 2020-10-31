@@ -14,8 +14,6 @@ public class Branch {
     private Integer houseNo;
     private String street;
     private String postCode;
-    @ManyToMany
-    Set<Reservation> reservations;
 
 
 //    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy =  "branch")

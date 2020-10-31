@@ -86,11 +86,4 @@ public class CarController {
         carService.delete(id);
         return new RedirectView("/carList");
     }
-
-
-
-
-
-
-
 }

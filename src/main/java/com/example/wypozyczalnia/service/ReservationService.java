@@ -24,7 +24,6 @@ public class ReservationService {
     }
 
     public Reservation get(Long id) {
-
         return reservationRepository.findById(id).get();
     }
 

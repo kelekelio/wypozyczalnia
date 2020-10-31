@@ -62,28 +62,41 @@
             <form action="#" th:action="@{/booking}" th:object="${bookingForm}" method="post">
                 <div class="input-group mb-3">
                     <div class="input-group-prepend">
-                        <label class="input-group-text" for="inputGroupSelect01">Pick-up location</label>
+                        <label class="input-group-text">Pick-up location</label>
                     </div>
-
-                    <select class="custom-select" id="inputGroupSelect01" name="branch.town">
-
-                        <option selected>Choose...</option>
-                        <tr th:each="branch: ${branchList}">
-
-                            <option value="1">
-                                <td th:text="${branch.town}"/>
-                                </a></option>
-                        </tr>
-
+                    <select class="custom-select" th:field="*{pickupBranchId}">
+                        <option th:value="-1" selected>Choose...</option>
+                        <option th:each="branch: ${branchList}" th:value="${branch.id}" th:text="${branch.town}"/>
                     </select>
                 </div>
+
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <label class="input-group-text">Drop-off location</label>
+                    </div>
+                    <select class="custom-select" th:field="*{dropOffBranchId}">
+                        <option th:value="-1" selected>Choose...</option>
+                        <option th:each="branch: ${branchList}" th:value="${branch.id}" th:text="${branch.town}"/>
+                    </select>
+                </div>
+
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <label class="input-group-text">Car</label>
+                    </div>
+                    <select class="custom-select" th:field="*{carId}">
+                        <option th:value="-1" selected>Choose...</option>
+                        <option th:each="car: ${carList}" th:value="${car.id}" th:text="${car.make + ' ' + car.model}"/>
+                    </select>
+                </div>
+
                 <div>
                     <label>Pick-up date</label>
-                    <input type="datetime-local" value="" th:field="*{fromDate}">
+                    <input type="date" th:field="*{from}">
                     <label>Drop-off date</label>
-                    <input type="datetime-local" th:field="*{toDate}">
+                    <input type="date" th:field="*{to}">
                 </div>
-                <input class="btn btn-success pull-left" type="submit" value="NEXT" id="searchButton">
+                <input class="btn btn-success pull-left" type="submit" value="Save">
             </form>
             <!--**********************************
                         </form>
