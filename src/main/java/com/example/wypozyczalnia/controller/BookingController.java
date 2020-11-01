@@ -10,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.view.RedirectView;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Set;
 
@@ -28,11 +29,28 @@ public class BookingController {
 
         return "booking/booking";
     }
+//@RequestMapping(value = "/booking", method = RequestMethod.POST)
+//public String formSubmit(@RequestParam String town, @RequestParam LocalDateTime fromDate, @RequestParam LocalDateTime toDate, Model model) {
+//        model.addAttribute("town", town);
+//        model.addAttribute("fromDate", fromDate);
+//        model.addAttribute("toDate", toDate);
+//        return "booking/result";
+//}
 
-    @PostMapping("/booking")
-    public String bookingSubmit(@ModelAttribute("bookingForm") Reservation reservation) {
-        reservationService.save(reservation);
-        return "booking/result";// tylko by dostac te 3 dane
+//    @RequestMapping(value = "/booking", method = RequestMethod.POST)
+//    public String bookingSubmit(@RequestParam String town, @RequestParam LocalDateTime fromDate, @RequestParam LocalDateTime toDate, Model model) {
+//        model.addAttribute("town", town);
+//        model.addAttribute("fromDate", fromDate);
+//        model.addAttribute("toDate", toDate);
+//        return "booking/result";
+//    }
+
+    @PostMapping(value = "/booking")
+    public String bookingSubmit(@RequestParam String town, @RequestParam LocalDateTime fromDate, @RequestParam LocalDateTime toDate, Model model) {
+        model.addAttribute("town", town);
+        model.addAttribute("fromDate", fromDate);
+        model.addAttribute("toDate", toDate);
+        return "booking/result";
 
     }
 //    @RequestMapping(value = {"/booking"}, method = RequestMethod.POST)

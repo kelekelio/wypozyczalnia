@@ -65,13 +65,13 @@
                         <label class="input-group-text" for="inputGroupSelect01">Pick-up location</label>
                     </div>
 
-                    <select class="custom-select" id="inputGroupSelect01" name="branch.town">
+                    <select class="custom-select" id="inputGroupSelect01" name="town">
 
                         <option selected>Choose...</option>
                         <tr th:each="branch: ${branchList}">
 
-                            <option value="branch.id">
-                                <td th:text="${branch.town}" />
+                            <option th:name="town">
+                                <td th:text="${branch.town}" th:name="town"/>
                                 <!--**********************************
                         <input type="hidden" th:value="" th:field="branch">
                 ***********************************-->
@@ -85,9 +85,9 @@
                 </div>
                 <div>
                     <label>Pick-up date</label>
-                    <input type="datetime-local" value="" th:field="*{fromDate}">
+                    <input type="datetime-local" value="" th:field="*{fromDate}" th:name="fromDate">
                     <label>Drop-off date</label>
-                    <input type="datetime-local" th:field="*{toDate}">
+                    <input type="datetime-local" th:field="*{toDate}" th:name="toDate">
                 </div>
                 <input class="btn btn-success pull-left" type="submit" value="NEXT" id="searchButton">
             </form>
