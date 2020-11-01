@@ -6,9 +6,9 @@
 </head>
 <body>
 <h1>Result</h1>
-<p th:text="'branch.town: ' + ${town}"  />
-<p th:text="'from date: ' + ${fromDate}"/>
-<p th:text="'to date: ' + ${toDate}"/>
+<p th:text="'branch.town: ' + ${bookingDTO.town}"  />
+<p th:text="'from date: ' + ${bookingDTO.fromDate}"/>
+<p th:text="'to date: ' + ${bookingDTO.fromDate}"/>
 <a href="/booking">Submit another booking</a>
 </body>
 </html>

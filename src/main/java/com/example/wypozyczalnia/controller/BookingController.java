@@ -1,5 +1,6 @@
 package com.example.wypozyczalnia.controller;
 
+import com.example.wypozyczalnia.DTO.BookingDTO;
 import com.example.wypozyczalnia.model.Branch;
 import com.example.wypozyczalnia.model.Reservation;
 import com.example.wypozyczalnia.service.BranchService;
@@ -26,6 +27,7 @@ public class BookingController {
         List<Branch> branchList = branchService.listAll();
         model.addAttribute("branchList", branchList);
         model.addAttribute("bookingForm", new Reservation());
+        model.addAttribute("bookingDTO", new BookingDTO());
 
         return "booking/booking";
     }
@@ -45,13 +47,17 @@ public class BookingController {
 //        return "booking/result";
 //    }
 
+//    @PostMapping(value = "/booking")
+//    public String bookingSubmit(@RequestParam String town, @RequestParam LocalDateTime fromDate, @RequestParam LocalDateTime toDate, Model model) {
+//        model.addAttribute("town", town);
+//        model.addAttribute("fromDate", fromDate);
+//        model.addAttribute("toDate", toDate);
+//        return "booking/result";
+//    }
     @PostMapping(value = "/booking")
-    public String bookingSubmit(@RequestParam String town, @RequestParam LocalDateTime fromDate, @RequestParam LocalDateTime toDate, Model model) {
-        model.addAttribute("town", town);
-        model.addAttribute("fromDate", fromDate);
-        model.addAttribute("toDate", toDate);
+    public String bookingSubmit(BookingDTO bookingDTO, Model model) {
+        model.addAttribute("bookingDTO", bookingDTO);
         return "booking/result";
-
     }
 //    @RequestMapping(value = {"/booking"}, method = RequestMethod.POST)
 //    public RedirectView postBooking(@ModelAttribute Reservation reservation) {

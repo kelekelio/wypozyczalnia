@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security" xmlns:form="http://www.w3.org/1999/html"
       layout:decorate="~{layouts/layout}">
 <html lang="en">
 
@@ -59,7 +59,7 @@
             <!--**********************************
                         <form action="#" th:action="@{/reservation}" th:object="${???????????????????? }" method="post">
                 ***********************************-->
-            <form action="#" th:action="@{/booking}" th:object="${bookingForm}" method="post">
+            <form action="#" th:action="@{/booking}" method="post" modelAttribute="bookingDTO">
                 <div class="input-group mb-3">
                     <div class="input-group-prepend">
                         <label class="input-group-text" for="inputGroupSelect01">Pick-up location</label>
@@ -72,9 +72,6 @@
 
                             <option th:name="town">
                                 <td th:text="${branch.town}" th:name="town"/>
-                                <!--**********************************
-                        <input type="hidden" th:value="" th:field="branch">
-                ***********************************-->
 
                                 </a></option>
 
@@ -85,9 +82,9 @@
                 </div>
                 <div>
                     <label>Pick-up date</label>
-                    <input type="datetime-local" value="" th:field="*{fromDate}" th:name="fromDate">
+                    <input type="datetime-local" th:field="*{bookingDTO.fromDate}" th:name="fromDate">
                     <label>Drop-off date</label>
-                    <input type="datetime-local" th:field="*{toDate}" th:name="toDate">
+                    <input type="datetime-local" th:field="*{bookingDTO.toDate}" th:name="toDate">
                 </div>
                 <input class="btn btn-success pull-left" type="submit" value="NEXT" id="searchButton">
             </form>
