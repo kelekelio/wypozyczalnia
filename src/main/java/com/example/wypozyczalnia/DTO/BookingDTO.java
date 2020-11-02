@@ -1,6 +1,5 @@
 package com.example.wypozyczalnia.DTO;
 
-import com.example.wypozyczalnia.model.Branch;
 
 public class BookingDTO {
     private Long branch_id;
@@ -9,6 +8,7 @@ public class BookingDTO {
     private String toDate;
 
     public BookingDTO() {
+        System.out.println("dto object created");
     }
 
     public Long getBranch_id() {
@@ -16,6 +16,7 @@ public class BookingDTO {
     }
 
     public void setBranch_id(Long branch_id) {
+        System.out.println("DTO branch_id = " +branch_id);
         this.branch_id = branch_id;
     }
 
@@ -24,6 +25,7 @@ public class BookingDTO {
     }
 
     public void setTown(String town) {
+        System.out.println("DTO town = " +town);
         this.town = town;
     }
 

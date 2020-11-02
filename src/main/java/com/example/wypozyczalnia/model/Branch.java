@@ -17,6 +17,8 @@ public class Branch {
     @ManyToMany
     Set<Reservation> reservations;
 
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy = "branch")
+    private Set<Car> cars = new HashSet<Car>();
 
 //    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy =  "branch")
 //    private Set<Employee> employees = new HashSet<Employee>();
