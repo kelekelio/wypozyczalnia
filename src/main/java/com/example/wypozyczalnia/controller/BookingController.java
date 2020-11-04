@@ -21,9 +21,9 @@ public class BookingController {
 
     @RequestMapping(value = "/booking", method = RequestMethod.GET)
     public String getBookingPage(Model model) {
+        model.addAttribute("bookingForm", new Reservation());
         List<Branch> branchList = branchService.listAll();
         model.addAttribute("branchList", branchList);
-        model.addAttribute("bookingForm", new Reservation());
         return "booking/booking";
     }
 

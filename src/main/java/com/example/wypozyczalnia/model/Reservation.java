@@ -1,5 +1,7 @@
 package com.example.wypozyczalnia.model;
 
+import org.joda.time.DateTime;
+
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.Set;
@@ -15,8 +17,8 @@ public class Reservation {
     private Long id;
     private LocalDate reservationDate;
     //private Client client;
-    private LocalDate fromDate;
-    private LocalDate toDate;
+    private String fromDate;
+    private String toDate;
 
     private Double price;
     @ManyToMany
@@ -31,7 +33,7 @@ public class Reservation {
     public Reservation() {
     }
 
-    public Reservation(Long id, LocalDate reservationDate, LocalDate fromDate, LocalDate toDate, Double price, Set<Branch> branches, Car car) {
+    public Reservation(Long id, LocalDate reservationDate, String fromDate, String toDate, Double price, Set<Branch> branches, Car car) {
         this.id = id;
         this.reservationDate = reservationDate;
         this.fromDate = fromDate;
@@ -57,19 +59,19 @@ public class Reservation {
         this.reservationDate = reservationDate;
     }
 
-    public LocalDate getFromDate() {
+    public String getFromDate() {
         return fromDate;
     }
 
-    public void setFromDate(LocalDate fromDate) {
+    public void setFromDate(String fromDate) {
         this.fromDate = fromDate;
     }
 
-    public LocalDate getToDate() {
+    public String getToDate() {
         return toDate;
     }
 
-    public void setToDate(LocalDate toDate) {
+    public void setToDate(String toDate) {
         this.toDate = toDate;
     }
 

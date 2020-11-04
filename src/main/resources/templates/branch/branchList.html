@@ -52,18 +52,8 @@
                 <div class="row page-titles mx-0">
                     <div class="col-sm-6 p-md-0">
                         <div class="welcome-text">
-                            <h4>List of branches</h4>
+                            <h4>Hi, welcome back!</h4>
                             <span class="ml-1">Datatable</span>
-                            <div>
-                                <a href="/branch/addNewBranch" class="btn btn-primary">Add New Branch</a>
-                            </div>
-                            <div>
-                                <a href="/employee/addNewEmployee" class="btn btn-primary">Add New Employee</a>
-                            </div>
-                            <div>
-                                <a href="/employee/updateEmployee2" class="btn btn-primary">Update Employee2</a>
-                            </div>
-
                         </div>
                     </div>
                     <div class="col-sm-6 p-md-0 justify-content-sm-end mt-2 mt-sm-0 d-flex">
@@ -83,46 +73,78 @@
                                 <h4 class="card-title">Datatable</h4>
                             </div>
                             <div class="card-body">
+                                <div class="form-row">
+                                    <div class="form-group col-md-12"></div>
+                                </div>
+
+
                                 <div class="table-responsive">
-                                    <table id="example2" class="display" style="width:100%">
+                                    <table id="example" class="display" style="width:100%">
                                         <thead>
                                         <tr>
-                                            <th>Branch ID</th>
+                                            <th>#</th>
                                             <th>Town</th>
                                             <th>House number</th>
                                             <th>Street</th>
                                             <th>Post code</th>
-                                            <th>Action</th>
+                                            <th sec:authorize="hasAnyAuthority('EMPL')">Action</th>
                                         </tr>
                                         </thead>
                                         <tbody>
                                         <tr th:each="branch : ${branchList}">
-                                            <td th:text="${branch.id}">Branch ID</td>
-                                            <td th:text="${branch.town}">Town</td>
-                                            <td th:text="${branch.houseNo}">House number</td>
-                                            <td th:text="${branch.street}">Street</td>
-                                            <td th:text="${branch.postCode}">Post code</td>
-                                            <td ><a th:href="@{/showUpdateBranchForm/{id}(id=${branch.id})}"  class="badge badge-warning">Update</a><span>
-                                            </span><a th:href="@{/deleteBranch{id}(id=${branch.id})}"  class="badge badge-danger">Delete</a></td>
+                                            <td th:text="${branch.id}"></td>
+                                            <td th:text="${branch.town}"></td>
+                                            <td th:text="${branch.houseNo}"></td>
+                                            <td th:text="${branch.street}"></td>
+                                            <td th:text="${branch.postCode}"></td>
+                                            <td sec:authorize="hasAnyAuthority('EMPL')">
+                                                <a href="#" th:href="@{/branch/editBranch/{id}(id=${branch.id})}">
+                                                    <button type="button" class="btn btn-rounded btn-warning"><i class="fa fa-edit"></i></button>
+                                                </a>
+                                                <button type="button" class="btn btn-rounded btn-danger" data-toggle="modal" data-target="#deleteModal"><i class="fa fa-trash"></i></button>
+                                                <!-- delete modal -->
+                                                <div class="modal" id="deleteModal">
+                                                    <div class="modal-dialog">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <h4 class="modal-title" >Are you sure you want to delete Branch #<span th:text="${branch.id}"></span>?</h4>
+                                                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                            </div>
+                                                            <div class="modal-body">There is no turning back</div>
+                                                            <div class="modal-footer">
+                                                                <form th:action="@{/branch/deleteBranch/{id}(id=${branch.id})}" method="post">
+                                                                    <input type="submit" class="btn btn-danger pull-left" value="Yes"/>
+                                                                </form>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!-- delete modal -->
+                                            </td>
                                         </tr>
                                         </tbody>
                                         <tfoot>
                                         <tr>
-                                            <th>Branch ID</th>
+                                            <th>#</th>
                                             <th>Town</th>
                                             <th>House number</th>
                                             <th>Street</th>
                                             <th>Post code</th>
-                                            <th>Action</th>
+                                            <th sec:authorize="hasAnyAuthority('EMPL')">Action</th>
                                         </tr>
                                         </tfoot>
                                     </table>
                                 </div>
                             </div>
                         </div>
+
+
+                        <div class="col-12" sec:authorize="hasAnyAuthority('ADMIN', 'MANAGER')">
+                            <a href="/car/addCar" th:href="@{/branch/addBranch}"><button type="button" class="btn btn-rounded btn-info"><span class="btn-icon-left text-info"><i class="fa fa-plus color-info"></i>
+                                    </span>Add</button></a>
+                        </div>
                     </div>
                 </div>
-
             </div>
         </div>
         <!--**********************************
