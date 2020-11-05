@@ -9,6 +9,34 @@
 <p th:text="'branch.town: ' + ${bookingDTO.town}"  />
 <p th:text="'from date: ' + ${bookingDTO.fromDate}"/>
 <p th:text="'to date: ' + ${bookingDTO.fromDate}"/>
+
+<table>
+    <thead>
+    <tr>
+        <th>Marka</th>
+        <th>Model</th>
+        <th>Typ nadwozia</th>
+        <th>Rok produkcji</th>
+        <th>Kolor</th>
+        <th>Przebieg</th>
+        <th>Status</th>
+        <th>Cena za dzień wypożyczenia</th>
+        <th></th>
+        <th></th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <tr th:each="car : ${carsList}">
+        <td th:text="${car.make}">Employee ID</td>
+        <td th:text="${car.model}">First name</td>
+        <td th:text="${car.body}">Last name</td>
+        <td th:text="${car.year}">Position</td>
+        <td th:text="${car.status}">Branch</td>
+    </tr>
+    </tbody>
+</table>
+
 <a href="/booking">Submit another booking</a>
 </body>
 </html>

@@ -4,6 +4,7 @@ import com.example.wypozyczalnia.DTO.BookingDTO;
 import com.example.wypozyczalnia.model.Branch;
 import com.example.wypozyczalnia.model.Reservation;
 import com.example.wypozyczalnia.service.BranchService;
+import com.example.wypozyczalnia.service.CarService;
 import com.example.wypozyczalnia.service.ReservationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -21,6 +22,9 @@ public class BookingController {
     private BranchService branchService;
     @Autowired
     private ReservationService reservationService;
+
+    @Autowired
+    private CarService carService;
 
     @RequestMapping(value = "/booking", method = RequestMethod.GET)
     public String getBookingPage(Model model) {
@@ -55,8 +59,9 @@ public class BookingController {
 //        return "booking/result";
 //    }
     @PostMapping(value = "/booking")
-    public String bookingSubmit(BookingDTO bookingDTO, Model model) {
+    public String bookingSubmit(BookingDTO bookingDTO, Model model) throws NumberFormatException {
         model.addAttribute("bookingDTO", bookingDTO);
+        model.addAttribute("carsList", carService.findAllCarForBranch(bookingDTO.getTown()));
         return "booking/result";
     }
 //    @RequestMapping(value = {"/booking"}, method = RequestMethod.POST)
