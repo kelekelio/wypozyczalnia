@@ -15,6 +15,7 @@ public class CarDto {
     private Double price;
 
     public CarDto() {
+        System.out.println("carDto object created");
     }
 
     public CarDto(Long id, String make, String model, String body, Integer year, Integer status, Integer available, Double price) {
@@ -35,6 +36,7 @@ public class CarDto {
 
     public void setId(Long id) {
         this.id = id;
+        System.out.println("carDto id= "+id);
     }
 
     public String getMake() {
@@ -42,7 +44,7 @@ public class CarDto {
     }
 
     public void setMake(String make) {
-        this.make = make;
+        this.make = make;System.out.println("carDto make= "+make);
     }
 
     public String getModel() {

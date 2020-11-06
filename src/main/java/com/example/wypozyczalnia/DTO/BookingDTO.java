@@ -8,7 +8,7 @@ public class BookingDTO {
     private String toDate;
 
     public BookingDTO() {
-        System.out.println("dto object created");
+        System.out.println("branchDto object created");
     }
 
     public Long getBranch_id() {

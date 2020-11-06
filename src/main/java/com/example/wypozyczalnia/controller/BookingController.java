@@ -1,6 +1,7 @@
 package com.example.wypozyczalnia.controller;
 
 import com.example.wypozyczalnia.DTO.BookingDTO;
+import com.example.wypozyczalnia.DTO.CarDto;
 import com.example.wypozyczalnia.model.Branch;
 import com.example.wypozyczalnia.model.Reservation;
 import com.example.wypozyczalnia.service.BranchService;
@@ -62,8 +63,19 @@ public class BookingController {
     public String bookingSubmit(BookingDTO bookingDTO, Model model) throws NumberFormatException {
         model.addAttribute("bookingDTO", bookingDTO);
         model.addAttribute("carsList", carService.findAllCarForBranch(bookingDTO.getTown()));
+        model.addAttribute("carDto", new CarDto());
         return "booking/result";
     }
+    @PostMapping(value = "/result")
+    public String reviewBooking(BookingDTO bookingDTO, CarDto carDto, Model model) throws NumberFormatException {
+        model.addAttribute("bookingDTO", bookingDTO);
+        model.addAttribute("carDto", carDto);
+        //carService.save(carService.get(carDto.getId()));
+        return "booking/reviewInputs";
+    }
+
+
+
 //    @RequestMapping(value = {"/booking"}, method = RequestMethod.POST)
 //    public RedirectView postBooking(@ModelAttribute Reservation reservation) {
 //        reservationService.save(reservation);
