@@ -15,6 +15,12 @@ let dataSet = [
         } 
     });
 
+    var table = $('#example3').DataTable({
+        createdRow: function ( row, data, index ) {
+            $(row).addClass('selected')
+        }
+    });
+
     $('.branchSelector').on('change', function () {
         table.columns(0).search( this.value ).draw();
     } );

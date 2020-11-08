@@ -187,8 +187,38 @@
 
                                             <div id="carlist" class="tab-pane fade ">
                                                 <div class="profile-skills pt-2 border-bottom-1 pb-2">
-                                                    <h4 class="text-primary mb-4">Cars</h4>
-                                                    <a href="javascript:void()" class="btn btn-outline-dark btn-rounded pl-4 my-3 my-sm-0 pr-4 mr-3 m-b-10"></a>
+                                                    <h4 class="text-primary mb-4">Assign Cars</h4>
+                                                </div>
+
+                                                <div class="table-responsive">
+                                                    <table id="example3" class="display" style="width:100%">
+                                                        <thead>
+                                                        <tr>
+                                                            <th>#</th>
+                                                            <th>Make</th>
+                                                            <th>Action</th>
+                                                        </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                        <tr th:each="car : ${carList}">
+                                                            <td th:text="${car.id}"></td>
+                                                            <td th:text="${car.make}"></td>
+                                                            <td >
+                                                                <a href="#" th:href="@{/assgnCarToBranch/{bid}/{cid}/(bid=${branch.id}, cid=${car.id})}">
+                                                                    <button type="button" class="btn btn-rounded btn-warning"><i class="fa fa-plus"></i></button>
+                                                                </a>
+
+                                                            </td>
+                                                        </tr>
+                                                        </tbody>
+                                                        <tfoot>
+                                                        <tr>
+                                                            <th>#</th>
+                                                            <th>Make</th>
+                                                            <th>Action</th>
+                                                        </tr>
+                                                        </tfoot>
+                                                    </table>
                                                 </div>
 
                                             </div>
@@ -196,8 +226,47 @@
 
                                             <div id="personnel" class="tab-pane fade ">
                                                 <div class="profile-skills pt-2 border-bottom-1 pb-2">
-                                                    <h4 class="text-primary mb-4">Personnel</h4>
-                                                    <a href="javascript:void()" class="btn btn-outline-dark btn-rounded pl-4 my-3 my-sm-0 pr-4 mr-3 m-b-10"></a>
+                                                    <h4 class="text-primary mb-4">Assign Personnel</h4>
+
+                                                </div>
+
+                                                <div class="table-responsive">
+                                                    <table id="example" class="display" style="width:100%">
+                                                        <thead>
+                                                        <tr>
+                                                            <th>#</th>
+                                                            <th>Name</th>
+                                                            <th>Last Name</th>
+                                                            <th>Email</th>
+                                                            <th>Role</th>
+                                                            <th>Action</th>
+                                                        </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                        <tr th:each="user : ${userList}">
+                                                            <td th:text="${user.id}"></td>
+                                                            <td th:text="${user.lastname}"></td>
+                                                            <td th:text="${user.firstname}"></td>
+                                                            <td th:text="${user.email}"></td>
+                                                            <td><span th:each="role : ${user.roles}" th:text="${role.role + ' '}"></span></td>
+                                                            <td >
+                                                                <a href="#" th:href="@{/assgnUserToBranch/{bid}/{uid}/(bid=${branch.id}, uid=${user.id})}">
+                                                                    <button type="button" class="btn btn-rounded btn-warning"><i class="fa fa-plus"></i></button>
+                                                                </a>
+                                                            </td>
+                                                        </tr>
+                                                        </tbody>
+                                                        <tfoot>
+                                                        <tr>
+                                                            <th>#</th>
+                                                            <th>Name</th>
+                                                            <th>Last Name</th>
+                                                            <th>Email</th>
+                                                            <th>Role</th>
+                                                            <th>Action</th>
+                                                        </tr>
+                                                        </tfoot>
+                                                    </table>
                                                 </div>
 
                                             </div>

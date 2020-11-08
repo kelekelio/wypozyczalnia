@@ -2,7 +2,10 @@ package com.example.wypozyczalnia.controller;
 
 import com.example.wypozyczalnia.model.Branch;
 import com.example.wypozyczalnia.model.Car;
+import com.example.wypozyczalnia.model.User;
 import com.example.wypozyczalnia.service.BranchService;
+import com.example.wypozyczalnia.service.CarService;
+import com.example.wypozyczalnia.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -18,6 +21,12 @@ import java.util.List;
 public class BranchController {
     @Autowired
     private BranchService branchService;
+
+    @Autowired
+    private CarService carService;
+
+    @Autowired
+    private UserService userService;
 
     @RequestMapping("branchList")
     public String viewBranchList(Model model) {
@@ -43,8 +52,20 @@ public class BranchController {
 
     @RequestMapping({"/branch/editBranch/{id}"})
     public String editExistingBranch(@PathVariable(value = "id") long id, Model model) {
+
+
+
         Branch branch = branchService.get(id);
         model.addAttribute("branch", branch);
+
+        List<Car> carList = carService.listAll();
+        model.addAttribute("carList", carList);
+
+        List<User> userList = userService.listAll();
+        model.addAttribute("userList", userList);
+
+
+
         return "branch/editBranch";
     }
 
