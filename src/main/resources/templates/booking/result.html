@@ -5,10 +5,69 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 </head>
 <body>
-<h1>Result</h1>
-<p th:text="'branch.town: ' + ${bookingDTO.town}"  />
+<form action="#" th:action="@{/result}" method="post" modelAttribute="carDTO">
+<h1>Time to choose a car</h1>
+<p th:text="'Pick-up branch: ' + ${bookingDTO.town}"  />
 <p th:text="'from date: ' + ${bookingDTO.fromDate}"/>
 <p th:text="'to date: ' + ${bookingDTO.fromDate}"/>
-<a href="/booking">Submit another booking</a>
+    <div>
+        <label>branch</label>
+        <input type="text" th:field="${bookingDTO.town}" th:name="fromDate">
+        <label>Pick-up date</label>
+        <input type="datetime-local" th:field="${bookingDTO.fromDate}" th:name="fromDate">
+        <label>Drop-off date</label>
+        <input type="datetime-local" th:field="${bookingDTO.toDate}" th:name="toDate">
+    </div>
+<div class="">
+    <label class="" for="">Available vehicles: </label>
+</div>
+<select class=""  name="car">
+
+    <option selected>Choose...</option>
+    <tr th:each="car: ${carsList}">
+
+        <option th:name="car" th:value="${car.id}">
+            <td th:text="${car.getMake()}" th:name="car"/>
+            <td th:text="${car.getModel()}" />
+            <td th:text="${car.getPrice()}" />
+
+            </a></option>
+
+    </tr>
+
+</select>
+<input class="btn btn-success pull-left" type="submit" value="NEXT" id="">
+</form>
+<br><br>
+<table>
+    <thead>
+    <tr>
+        <th>Make</th>
+        <th>Model</th>
+        <th>Body</th>
+        <th>Year</th>
+        <th>Price</th>
+        <th>Action</th>
+        <th></th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <tr th:each="car : ${carsList}">
+        <td th:text="${car.make}">Make</td>
+        <td th:text="${car.model}">Model</td>
+        <td th:text="${car.body}">Body</td>
+        <td th:text="${car.year}">Year</td>
+        <td th:text="${car.price}">Status</td>
+        <td><a href="/reviewInputs">BOOK</a>
+        </td>
+
+    </tr>
+    </tbody>
+</table>
+
+<a href="/booking">Change dates</a>
+
+
 </body>
 </html>

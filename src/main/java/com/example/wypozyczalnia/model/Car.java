@@ -125,4 +125,12 @@ public class Car {
     public void setPrice(Double price) {
         this.price = price;
     }
+
+    public Branch getBranch() {
+        return branch;
+    }
+
+    public void setBranch(Branch branch) {
+        this.branch = branch;
+    }
 }

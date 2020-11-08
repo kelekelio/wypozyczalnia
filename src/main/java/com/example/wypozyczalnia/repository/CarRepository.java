@@ -15,4 +15,6 @@ public interface CarRepository extends JpaRepository<Car, Long>  {
 
     @Query("SELECT F FROM Car F WHERE F.available = 1")
     List<Car> findAllAvailableCars();
+
+    List<Car> findByBranchId(final Long branchId);
 }

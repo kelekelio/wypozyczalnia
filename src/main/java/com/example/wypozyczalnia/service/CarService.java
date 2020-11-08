@@ -1,5 +1,7 @@
 package com.example.wypozyczalnia.service;
 
+import com.example.wypozyczalnia.DTO.CarDto;
+import com.example.wypozyczalnia.mappers.CarMapper;
 import com.example.wypozyczalnia.model.Car;
 import com.example.wypozyczalnia.model.Employee;
 import com.example.wypozyczalnia.repository.CarRepository;
@@ -8,6 +10,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * @author Grzegorz Nowakowski
@@ -41,5 +44,16 @@ public class CarService {
 
     public List<Car> listAllAvailableCars() {
         return carRepository.findAllAvailableCars();
+    }
+
+    public List<CarDto> findAllCarForBranch(final String branchId) throws NumberFormatException {
+        Long branchIdLong = Long.parseLong(branchId);
+        return findAllCarForBranch(branchIdLong);
+    }
+
+    public List<CarDto> findAllCarForBranch(final Long branchId) {
+        List<CarDto> branchCars = carRepository.findByBranchId(branchId)
+                .stream().map(c -> CarMapper.INSTANCE.carToDto(c)).collect(Collectors.toList());
+        return branchCars;
     }
 }

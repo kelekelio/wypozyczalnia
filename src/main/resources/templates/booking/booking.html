@@ -70,7 +70,7 @@
                         <option selected>Choose...</option>
                         <tr th:each="branch: ${branchList}">
 
-                            <option th:name="town">
+                            <option th:name="town" th:value="${branch.id}">
                                 <td th:text="${branch.town}" th:name="town"/>
 
                                 </a></option>

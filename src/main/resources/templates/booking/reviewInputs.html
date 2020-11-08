@@ -1,0 +1,25 @@
+<!DOCTYPE HTML>
+<html xmlns:th="https://www.thymeleaf.org" lang="en">
+<head>
+    <title>Handling Form Submission - bookingForm</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+</head>
+<body>
+
+<h1>Review your booking</h1>
+<p th:text="'Pick-up branch: ' + ${bookingDTO.town}"  />
+<p th:text="'from date: ' + ${bookingDTO.fromDate}"/>
+<p th:text="'to date: ' + ${bookingDTO.fromDate}"/>
+<p th:text="'vehicle: ' + ${carDto.getId()}"/>
+<p th:text="'vehicleModel: ' + ${carDto.getModel()}"/>
+
+
+
+<br><br>
+
+
+<a href="/booking">Change dates</a>
+
+
+</body>
+</html>
