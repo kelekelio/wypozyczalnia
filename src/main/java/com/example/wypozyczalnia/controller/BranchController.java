@@ -59,7 +59,7 @@ public class BranchController {
         Branch branch = branchService.get(id);
         model.addAttribute("branch", branch);
 
-        List<Car> carList = carService.listAll();
+        List<Car> carList = carService.listAllCarsByBranch(id);
         model.addAttribute("carList", carList);
 
         List<User> userList = userService.listAll();

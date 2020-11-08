@@ -46,6 +46,10 @@ public class CarService {
         return carRepository.findAllAvailableCars();
     }
 
+    public List<Car> listAllCarsByBranch(Long id) {
+        return carRepository.findAllCarsByBranch(id);
+    }
+
     public List<CarDto> findAllCarForBranch(final String branchId) throws NumberFormatException {
         Long branchIdLong = Long.parseLong(branchId);
         return findAllCarForBranch(branchIdLong);
