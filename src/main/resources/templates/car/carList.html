@@ -113,7 +113,7 @@
                                             <th>Status</th>
                                             <th>Available</th>
                                             <th>Kwota</th>
-
+                                            <th>Branch</th>
                                             <th sec:authorize="hasAnyAuthority('EMPL')">Action</th>
                                         </tr>
                                         </thead>
@@ -129,29 +129,15 @@
                                             <td th:text="${car.status}"></td>
                                             <td th:text="${car.available}"></td>
                                             <td th:text="${car.price}"></td>
+                                            <td th:text="${car.branch.id}"></td>
                                             <td sec:authorize="hasAnyAuthority('EMPL')">
                                                 <a href="#" th:href="@{/car/addCar/{id}(id=${car.id})}">
                                                     <button type="button" class="btn btn-rounded btn-warning"><i class="fa fa-edit"></i></button>
                                                 </a>
-                                                <button type="button" class="btn btn-rounded btn-danger" data-toggle="modal" data-target="#deleteModal"><i class="fa fa-trash"></i></button>
-                                                <!-- delete modal -->
-                                                <div class="modal" id="deleteModal">
-                                                    <div class="modal-dialog">
-                                                        <div class="modal-content">
-                                                            <div class="modal-header">
-                                                                <h4 class="modal-title" >Are you sure you want to delete car #<span th:text="${car.id}"></span>?</h4>
-                                                                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                                            </div>
-                                                            <div class="modal-body">There is no turning back</div>
-                                                            <div class="modal-footer">
-                                                                <form th:action="@{/car/deleteCar/{id}(id=${car.id})}" method="post">
-                                                                    <input type="submit" class="btn btn-danger pull-left" value="Yes"/>
-                                                                </form>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <!-- delete modal -->
+
+                                                <a href="#" th:href="@{/car/deleteCar/{id}(id=${car.id})}">
+                                                    <button type="button" class="btn btn-rounded btn-danger"><i class="fa fa-trash"></i></button>
+                                                </a>
                                             </td>
                                         </tr>
                                         </tbody>
@@ -167,6 +153,7 @@
                                             <th>Status</th>
                                             <th>Available</th>
                                             <th>Kwota</th>
+                                            <th>Branch</th>
                                             <th sec:authorize="hasAnyAuthority('EMPL')">Action</th>
                                         </tr>
                                         </tfoot>
