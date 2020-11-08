@@ -20,26 +20,26 @@ public class WypozyczalniaApplication {
         SpringApplication.run(WypozyczalniaApplication.class, args);
     }
 
-    @Bean
-    CommandLineRunner initDatabase(BranchRepository branchRepository,
-                                   CarRepository carRepository) {
-        return args -> {
-
-            Branch branch = branchRepository.save(new Branch(null, "Londyn", 2, "Kwadrat", "Rynek 29"));
-
-            Car car1 = new Car(null,
-                    "Ford",
-                    "Kuga",
-                    "SUV",
-                    2020,
-                    "green",
-                    1L,
-                    1,
-                    1,
-                    50.0d);
-            car1.setBranch(branch);
-            carRepository.save(car1);
-        };
-    }
+//    @Bean
+//    CommandLineRunner initDatabase(BranchRepository branchRepository,
+//                                   CarRepository carRepository) {
+//        return args -> {
+//
+//            Branch branch = branchRepository.save(new Branch(null, "Londyn", 2, "Kwadrat", "Rynek 29"));
+//
+//            Car car1 = new Car(null,
+//                    "Ford",
+//                    "Kuga",
+//                    "SUV",
+//                    2020,
+//                    "green",
+//                    1L,
+//                    1,
+//                    1,
+//                    50.0d);
+//            car1.setBranch(branch);
+//            carRepository.save(car1);
+//        };
+//    }
 
 }

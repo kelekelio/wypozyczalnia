@@ -59,12 +59,19 @@ public class BookingController {
 //        model.addAttribute("toDate", toDate);
 //        return "booking/result";
 //    }
+//    @PostMapping(value = "/booking")
+//    public String bookingSubmit(BookingDTO bookingDTO, Model model) throws NumberFormatException {
+//        model.addAttribute("bookingDTO", bookingDTO);
+//        model.addAttribute("carsList", carService.findAllCarForBranch(bookingDTO.getTown()));
+//        model.addAttribute("carDto", new CarDto());
+//        return "booking/result";
+//    }
     @PostMapping(value = "/booking")
     public String bookingSubmit(BookingDTO bookingDTO, Model model) throws NumberFormatException {
         model.addAttribute("bookingDTO", bookingDTO);
         model.addAttribute("carsList", carService.findAllCarForBranch(bookingDTO.getTown()));
         model.addAttribute("carDto", new CarDto());
-        return "booking/result";
+        return "booking/bookingCar";
     }
     @PostMapping(value = "/result")
     public String reviewBooking(BookingDTO bookingDTO, CarDto carDto, Model model) throws NumberFormatException {
