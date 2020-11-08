@@ -26,8 +26,6 @@ public class Car {
     @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy = "car")
     private Set<Reservation> reservations = new HashSet<Reservation>();
 
-
-
     public Car() {
     }
 

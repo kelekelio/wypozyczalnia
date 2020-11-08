@@ -1,7 +1,5 @@
 package com.example.wypozyczalnia.model;
 
-import org.joda.time.DateTime;
-
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.Set;
@@ -17,29 +15,34 @@ public class Reservation {
     private Long id;
     private LocalDate reservationDate;
     //private Client client;
-    private String fromDate;
-    private String toDate;
+    private LocalDate fromDate;
+    private LocalDate toDate;
 
     private Double price;
-    @ManyToMany
-    Set<Branch> branches;
-//    private Branch pickUp;
-//    private Branch dropOff;
+
+    @OneToOne
+    @JoinColumn(name = "pickupBranchId")
+    private Branch pickupBranch;
+
+    @OneToOne
+    @JoinColumn(name = "dropOffBranchId")
+    private Branch dropOffBranch;
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "reservation_id")
+    @JoinColumn(name = "car_id")
     private Car car;
 
     public Reservation() {
     }
 
-    public Reservation(Long id, LocalDate reservationDate, String fromDate, String toDate, Double price, Set<Branch> branches, Car car) {
+    public Reservation(Long id, LocalDate reservationDate, LocalDate fromDate, LocalDate toDate, Double price, Branch pickupBranch, Branch dropOffBranch, Car car) {
         this.id = id;
         this.reservationDate = reservationDate;
         this.fromDate = fromDate;
         this.toDate = toDate;
         this.price = price;
-        this.branches = branches;
+        this.pickupBranch = pickupBranch;
+        this.dropOffBranch = dropOffBranch;
         this.car = car;
     }
 
@@ -59,19 +62,19 @@ public class Reservation {
         this.reservationDate = reservationDate;
     }
 
-    public String getFromDate() {
+    public LocalDate getFromDate() {
         return fromDate;
     }
 
-    public void setFromDate(String fromDate) {
+    public void setFromDate(LocalDate fromDate) {
         this.fromDate = fromDate;
     }
 
-    public String getToDate() {
+    public LocalDate getToDate() {
         return toDate;
     }
 
-    public void setToDate(String toDate) {
+    public void setToDate(LocalDate toDate) {
         this.toDate = toDate;
     }
 
@@ -83,12 +86,20 @@ public class Reservation {
         this.price = price;
     }
 
-    public Set<Branch> getBranches() {
-        return branches;
+    public Branch getPickupBranch() {
+        return pickupBranch;
     }
 
-    public void setBranches(Set<Branch> branches) {
-        this.branches = branches;
+    public void setPickupBranch(Branch pickupBranch) {
+        this.pickupBranch = pickupBranch;
+    }
+
+    public Branch getDropOffBranch() {
+        return dropOffBranch;
+    }
+
+    public void setDropOffBranch(Branch dropOffBranch) {
+        this.dropOffBranch = dropOffBranch;
     }
 
     public Car getCar() {
