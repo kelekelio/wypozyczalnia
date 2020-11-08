@@ -15,6 +15,8 @@ public class Branch {
     private String street;
     private String postCode;
 
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy = "branch")
+    private Set<Car> cars = new HashSet<Car>();
 
 //    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy =  "branch")
 //    private Set<Employee> employees = new HashSet<Employee>();

@@ -26,6 +26,10 @@ public class Car {
     @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy = "car")
     private Set<Reservation> reservations = new HashSet<Reservation>();
 
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "branch_id")
+    private Branch branch;
+
     public Car() {
     }
 
