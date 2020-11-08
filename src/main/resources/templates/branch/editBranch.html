@@ -196,6 +196,7 @@
                                                         <tr>
                                                             <th>#</th>
                                                             <th>Make</th>
+                                                            <th>Branch</th>
                                                             <th>Action</th>
                                                         </tr>
                                                         </thead>
@@ -203,6 +204,7 @@
                                                         <tr th:each="car : ${carList}">
                                                             <td th:text="${car.id}"></td>
                                                             <td th:text="${car.make}"></td>
+                                                            <td th:text="${car.branch}"></td>
                                                             <td >
                                                                 <a href="#" th:href="@{/assgnCarToBranch/{bid}/{cid}/(bid=${branch.id}, cid=${car.id})}">
                                                                     <button type="button" class="btn btn-rounded btn-warning"><i class="fa fa-plus"></i></button>
@@ -215,6 +217,7 @@
                                                         <tr>
                                                             <th>#</th>
                                                             <th>Make</th>
+                                                            <th>Branch</th>
                                                             <th>Action</th>
                                                         </tr>
                                                         </tfoot>
