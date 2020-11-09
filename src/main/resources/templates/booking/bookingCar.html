@@ -13,156 +13,172 @@
 
 <body>
 
-    <!--*******************
-        Preloader start
-    ********************-->
-    <div th:replace="fragments/preloader :: preloader"></div>
-    <!--*******************
-        Preloader end
-    ********************-->
+<!--*******************
+    Preloader start
+********************-->
+<div th:replace="fragments/preloader :: preloader"></div>
+<!--*******************
+    Preloader end
+********************-->
 
+
+<!--**********************************
+    Main wrapper start
+***********************************-->
+<div id="main-wrapper">
 
     <!--**********************************
-        Main wrapper start
+        Nav header start
     ***********************************-->
-    <div id="main-wrapper">
+    <div th:replace="fragments/header :: header"></div>
+    <!--**********************************
+        Header end ti-comment-alt
+    ***********************************-->
 
-        <!--**********************************
-            Nav header start
-        ***********************************-->
-        <div th:replace="fragments/header :: header"></div>
-        <!--**********************************
-            Header end ti-comment-alt
-        ***********************************-->
+    <!--**********************************
+        Sidebar start
+    ***********************************-->
+    <div th:replace="fragments/sidebar :: sidebar"></div>
+    <!--**********************************
+        Sidebar end
+    ***********************************-->
 
-        <!--**********************************
-            Sidebar start
-        ***********************************-->
-        <div th:replace="fragments/sidebar :: sidebar"></div>
-        <!--**********************************
-            Sidebar end
-        ***********************************-->
-
-        <!--**********************************
-            Content body start
-        ***********************************-->
-        <div class="content-body">
-            <!-- row -->
-            <div class="container-fluid">
+    <!--**********************************
+        Content body start
+    ***********************************-->
+    <div class="content-body">
+        <!-- row -->
+        <div class="container-fluid">
 
 
-                    <!--**********************************
-                            PUT CONTENT HERE
-                    ***********************************-->
-                <form action="#" th:action="@{/result}" method="post" modelAttribute="carDTO">
-                    <h1>Time to choose a car</h1>
-                    <p th:text="'Pick-up branch: ' + ${bookingDTO.town}"  />
-                    <p th:text="'from date: ' + ${bookingDTO.fromDate}"/>
-                    <p th:text="'to date: ' + ${bookingDTO.fromDate}"/>
+            <!--**********************************
+                    PUT CONTENT HERE
+            ***********************************-->
+            <form th:action="@{bookingCar/{id}(id=${carDto.id})}" method="post" modelAttribute="carDto">
 
-                </form>
+                <h1>Time to choose a car</h1>
+                <p th:text="'Pick-up branch: ' + ${bookingDTO.town}"/>
+                <p th:text="'from date: ' + ${bookingDTO.fromDate}"/>
+                <p th:text="'to date: ' + ${bookingDTO.fromDate}"/>
+
+                <input type="hidden" th:field="${bookingDTO.town}" th:name="town">
+
+                <input type="hidden" th:field="${bookingDTO.fromDate}" th:name="fromDate">
+
+                <input type="hidden" th:field="${bookingDTO.toDate}" th:name="toDate">
+
                 <br><br>
                 <div class="table-responsive">
                     <table id="example" class="display" style="width:100%">
                         <thead>
                         <tr>
 
-                        <th>Make</th>
-                        <th>Model</th>
-                        <th>Body</th>
-                        <th>Year</th>
-                        <th>Price</th>
-                        <th>Action</th>
-                        <th></th>
-                    </tr>
-                    </thead>
+                            <th>ID</th>
+                            <th>Make</th>
+                            <th>Model</th>
+                            <th>Body</th>
+                            <th>Year</th>
+                            <th>Price</th>
+                            <th>Action</th>
+                            <th></th>
+                        </tr>
+                        </thead>
 
-                    <tbody>
-                    <tr th:each="car : ${carsList}">
-                        <td th:text="${car.make}">Make</td>
-                        <td th:text="${car.model}">Model</td>
-                        <td th:text="${car.body}">Body</td>
-                        <td th:text="${car.year}">Year</td>
-                        <td th:text="${car.price}">Status</td>
-                        <td>
-                            <button type="button" class="btn btn-rounded btn-secondary" data-toggle="modal" data-target="#confirmationModal"><i class="fa fa-check-square-o"></i></button>
-                            <!-- confirmation modal -->
-                            <div class="modal" id="confirmationModal">
-                                <div class="modal-dialog">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h4 class="modal-title" >Confirm your choice </h4>
-                                            <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                        </div>
-                                        <div class="modal-body">Your choice
-                                            <p th:text="'Pick-up branch: ' + ${bookingDTO.town}"  />
-                                            <p th:text="'from date: ' + ${bookingDTO.fromDate}"/>
-                                            <p th:text="'to date: ' + ${bookingDTO.fromDate}"/>
-                                            <p th:text="'car make: ' + ${car.make}"/>
-                                            <p th:text="'car model: ' + ${car.model}"/>
-                                            <p th:text="'car body: ' + ${car.body}"/>
-                                            <p th:text="'price: ' + ${car.price}"/>
-                                        </div>
-                                        <div class="modal-footer">
-                                            <form th:action="@{/bookingConfirmation}" method="post">
+                        <tbody>
+                        <tr th:each="car : ${carsList} " th:value="${car.id}" th:id="car" th:var="car">
+                            <td th:text="${car.id}" th:value="${car.id}">Id</td>
+<!--                            <input type="hidden" th:field="${car.id}" th:name="car"-->
+<!--                                   th:value="${car.id}">-->
+                            <td th:text="${car.make}">Make</td>
+                            <td th:text="${car.model}">Model</td>
+                            <td th:text="${car.body}">Body</td>
+                            <td th:text="${car.year}">Year</td>
+                            <td th:text="${car.price}">Status</td>
+                            <td>
+                                <button type="button" class="btn btn-rounded btn-secondary" data-toggle="modal"
+                                        data-target="#confirmationModal" th:id="${carDto.id}"><i
+                                        class="fa fa-check-square-o"></i></button>
+                                <!-- confirmation modal -->
+                                <div class="modal" id="confirmationModal">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h4 class="modal-title">Confirm your choice </h4>
+                                                <button type="button" class="close" data-dismiss="modal">&times;
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">Your choice
+                                                <p th:text="'Pick-up branch: ' + ${bookingDTO.town}"/>
+                                                <p th:text="'from date: ' + ${bookingDTO.fromDate}"/>
+                                                <p th:text="'to date: ' + ${bookingDTO.fromDate}"/>
+                                                <p th:text="'car ID: ' + ${car.id}"/>
+                                                <p th:text="'car make: ' + ${car.make}"/>
+                                                <p th:text="'car model: ' + ${car.model}"/>
+                                                <p th:text="'car body: ' + ${car.body}"/>
+                                                <p th:text="'price: ' + ${car.price}"/>
+                                            </div>
+                                            <div class="modal-footer">
+
                                                 <input type="submit" class="btn btn-warning pull-left" value="Go back"/>
-                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">
+                                                    Close
+                                                </button>
                                                 <input type="submit" class="btn btn-primary pull-left" value="Confirm"/>
 
-                                            </form>
+
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
 
 
+                                <!-- confirmation modal -->
 
-                            <!-- confirmation modal -->
 
+                            </td>
 
-                        </td>
-
-                    </tr>
-                    </tbody>
-                </table>
+                        </tr>
+                        </tbody>
+                    </table>
                 </div>
-                <a href="/booking">Change dates</a>
+            </form>
+            <a href="/booking">Change dates</a>
 
-                <!--********************END OF CONTENT*****************-->
-            </div>
+            <!--********************END OF CONTENT*****************-->
         </div>
-        <!--**********************************
-            Content body end
-        ***********************************-->
-
-
-        <!--**********************************
-            Footer start
-        ***********************************-->
-        <div th:replace="fragments/footer :: footer"></div>
-        <!--**********************************
-            Footer end
-        ***********************************-->
-
-        <!--**********************************
-           Support ticket button start
-        ***********************************-->
-
-        <!--**********************************
-           Support ticket button end
-        ***********************************-->
-
-
     </div>
     <!--**********************************
-        Main wrapper end
+        Content body end
+    ***********************************-->
+
+
+    <!--**********************************
+        Footer start
+    ***********************************-->
+    <div th:replace="fragments/footer :: footer"></div>
+    <!--**********************************
+        Footer end
     ***********************************-->
 
     <!--**********************************
-        Scripts
+       Support ticket button start
     ***********************************-->
-    <!-- Required vendors -->
-    <div th:replace="fragments/js :: js"></div>
+
+    <!--**********************************
+       Support ticket button end
+    ***********************************-->
+
+
+</div>
+<!--**********************************
+    Main wrapper end
+***********************************-->
+
+<!--**********************************
+    Scripts
+***********************************-->
+<!-- Required vendors -->
+<div th:replace="fragments/js :: js"></div>
 
 </body>
 
