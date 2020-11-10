@@ -6,9 +6,18 @@ public class BookingDTO {
     private String town;
     private String fromDate;
     private String toDate;
+    private Long selectedCarId;
 
     public BookingDTO() {
         System.out.println("branchDto object created");
+    }
+
+    public Long getSelectedCarId() {
+        return selectedCarId;
+    }
+
+    public void setSelectedCarId(Long selectedCarId) {
+        this.selectedCarId = selectedCarId;
     }
 
     public Long getBranch_id() {

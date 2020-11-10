@@ -39,6 +39,32 @@ public class WypozyczalniaApplication {
 //                    50.0d);
 //            car1.setBranch(branch);
 //            carRepository.save(car1);
+//
+//            Car car2 = new Car(null,
+//                    "Ford",
+//                    "Fiesta",
+//                    "Hatchback",
+//                    2016,
+//                    "red",
+//                    3500L,
+//                    1,
+//                    1,
+//                    80.0d);
+//            car2.setBranch(branch);
+//            carRepository.save(car2);
+//
+//            Car car3 = new Car(null,
+//                    "Renault",
+//                    "Modus",
+//                    "Hatchback",
+//                    2010,
+//                    "blue",
+//                    12000L,
+//                    1,
+//                    1,
+//                    125.0d);
+//            car3.setBranch(branch);
+//            carRepository.save(car3);
 //        };
 //    }
 

@@ -2,6 +2,7 @@ package com.example.wypozyczalnia.controller;
 
 import com.example.wypozyczalnia.DTO.BookingDTO;
 import com.example.wypozyczalnia.DTO.CarDto;
+import com.example.wypozyczalnia.mappers.CarMapper;
 import com.example.wypozyczalnia.model.Branch;
 import com.example.wypozyczalnia.model.Reservation;
 import com.example.wypozyczalnia.service.BranchService;
@@ -48,8 +49,13 @@ public class BookingController {
     @PostMapping(value = "bookingCar")
     public String bookingConfirmation(BookingDTO bookingDTO, CarDto carDto, Model model) throws NumberFormatException {
         model.addAttribute("bookingDTO", bookingDTO);
-        model.addAttribute("carDto", carDto);
-        //carService.save(carService.get(carDto.getId()));
+        if(bookingDTO.getSelectedCarId() != null) {
+            CarDto selectedCar = CarMapper.INSTANCE
+                    .carToDto(carService.get(bookingDTO.getSelectedCarId()));
+            model.addAttribute("carDto", selectedCar);
+        } else{
+            model.addAttribute("carDto", carDto);
+        }
         return "booking/bookingConfirmation";
     }
 }

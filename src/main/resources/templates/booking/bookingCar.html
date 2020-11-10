@@ -116,6 +116,7 @@
                                                 <p th:text="'car model: ' + ${car.model}"/>
                                                 <p th:text="'car body: ' + ${car.body}"/>
                                                 <p th:text="'price: ' + ${car.price}"/>
+                                                <input type="hidden" th:name="selectedCarId" th:value="${car.id}">
                                             </div>
                                             <div class="modal-footer">
 
@@ -127,6 +128,7 @@
 
 
                                             </div>
+
                                         </div>
                                     </div>
                                 </div>
