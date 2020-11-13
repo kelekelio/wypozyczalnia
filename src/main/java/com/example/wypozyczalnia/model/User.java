@@ -24,7 +24,7 @@ public class User {
     @Column(name = "lastname")
     private String lastname;
 
-    @Column(name = "password", updatable = false)
+    @Column(name = "password")
     private String password;
 
     @Column(name = "active")
