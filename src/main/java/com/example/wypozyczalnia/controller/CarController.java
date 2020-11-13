@@ -83,7 +83,7 @@ public class CarController {
 
     @RequestMapping({"/car/deleteCar/{id}"})
     public RedirectView deleteCar(Model model, @PathVariable("id") Long id) {
-        carService.delete(id);
+        carService.deleteById(id);
         return new RedirectView("/carList");
     }
 }
