@@ -39,13 +39,19 @@ public class UserServiceImpl implements UserService {
         user.setActive(1);
         Role userRole = roleRespository.findByRole("USER");
         if (userRole == null) {
-            roleRespository.save(new Role(1L, "USER"));
-            roleRespository.save(new Role(2L, "EMPL"));
-            roleRespository.save(new Role(3L, "MANAGER"));
-            roleRespository.save(new Role(4L, "ADMIN"));
-            userRole = roleRespository.findByRole("USER");
+            roleRespository.save(new Role(1, "USER"));
+            roleRespository.save(new Role(2, "EMPL"));
+            roleRespository.save(new Role(3, "MANAGER"));
+            roleRespository.save(new Role(4, "ADMIN"));
+            userRole = roleRespository.findByRole("ADMIN");
         }
         user.setRoles(new HashSet<Role>(Arrays.asList(userRole)));
+        userRepository.save(user);
+    }
+
+
+    @Override
+    public void updateUser (User user) {
         userRepository.save(user);
     }
 

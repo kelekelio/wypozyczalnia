@@ -5,8 +5,10 @@ import com.example.wypozyczalnia.model.Car;
 import com.example.wypozyczalnia.model.Role;
 import com.example.wypozyczalnia.model.User;
 import com.example.wypozyczalnia.repository.RoleRespository;
+import com.example.wypozyczalnia.repository.UserRepository;
 import com.example.wypozyczalnia.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -22,6 +24,7 @@ import org.springframework.web.servlet.view.RedirectView;
 
 import javax.validation.Valid;
 import java.security.Principal;
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -34,6 +37,9 @@ public class UserController {
 
     @Autowired
     private UserService userService;
+
+    @Autowired
+    private RoleRespository roleRespository;
 
     @RequestMapping(value= {"/login"}, method= RequestMethod.GET)
     public ModelAndView login() {
@@ -76,10 +82,16 @@ public class UserController {
     @RequestMapping({"/profile/{id}"})
     public String updateProfile(@PathVariable(value = "id") long id, Model model) {
 
+
+
         User user = userService.findUserById(id);
         model.addAttribute("user", user);
 
-        return "user/profile";
+        List<Role> roles = roleRespository.findAll();
+
+        model.addAttribute("allRoles", roles);
+
+        return "user/userList";
     }
 
 
@@ -89,6 +101,10 @@ public class UserController {
         String currentUser = principal.getName();
         User user = userService.findUserByEmail(currentUser);
         model.addAttribute("user", user);
+
+        List<Role> roles = roleRespository.findAll();
+
+        model.addAttribute("allRoles", roles);
 
         return "user/profile";
     }
@@ -111,8 +127,19 @@ public class UserController {
 
     @RequestMapping(value = {"/updateUser"}, method = RequestMethod.POST)
     public RedirectView saveUpdateUser(@ModelAttribute User user) {
-        userService.saveUser(user);
-        return new RedirectView("/profile/" + user.getId());
+
+
+        Long id1 = user.getId();
+        Set<Role> role1 = user.getRoles();
+
+        User user1 = userService.findUserById(id1);
+        user1.setRoles(role1);
+
+
+        userService.updateUser(user1);
+
+
+        return new RedirectView("/profile");
     }
 
 

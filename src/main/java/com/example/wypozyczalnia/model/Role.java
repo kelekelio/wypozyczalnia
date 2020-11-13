@@ -12,7 +12,7 @@ public class Role {
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
     @Column(name="role_id")
-    private long id;
+    private Integer id;
 
     @Column(name="role")
     private String role;
@@ -20,16 +20,16 @@ public class Role {
     public Role() {
     }
 
-    public Role(long id, String role) {
+    public Role(Integer id, String role) {
         this.id = id;
         this.role = role;
     }
 
-    public long getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -39,5 +39,35 @@ public class Role {
 
     public void setRole(String role) {
         this.role = role;
+    }
+
+    @Override
+    public String toString() {
+        return this.role;
+    }
+
+    @Override
+    public int hashCode() {
+        final int prime = 31;
+        int result = 1;
+        result = prime * result + ((id == null) ? 0 : id.hashCode());
+        return result;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (obj == null)
+            return false;
+        if (getClass() != obj.getClass())
+            return false;
+        Role other = (Role) obj;
+        if (id == null) {
+            if (other.id != null)
+                return false;
+        } else if (!id.equals(other.id))
+            return false;
+        return true;
     }
 }

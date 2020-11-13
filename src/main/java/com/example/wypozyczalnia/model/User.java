@@ -1,6 +1,7 @@
 package com.example.wypozyczalnia.model;
 
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.Set;
 
 /**
@@ -23,15 +24,15 @@ public class User {
     @Column(name = "lastname")
     private String lastname;
 
-    @Column(name = "password")
+    @Column(name = "password", updatable = false)
     private String password;
 
     @Column(name = "active")
     private int active;
 
-    @ManyToMany(cascade=CascadeType.ALL)
+    @ManyToMany(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
     @JoinTable(name="user_role", joinColumns=@JoinColumn(name="user_id"), inverseJoinColumns=@JoinColumn(name="role_id"))
-    private Set<Role> roles;
+    private Set<Role> roles = new HashSet<>();
 
     public long getId() {
         return id;
