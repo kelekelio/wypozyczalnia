@@ -55,6 +55,27 @@ public class UserServiceImpl implements UserService {
         userRepository.save(user);
     }
 
+
+    /*
+    @Override
+    public List<User> getUserListByRoleId(Integer roleId) {
+        return userRepository.userListByRoleId(roleId);
+    }
+
+     */
+
+    @Override
+    public List<User> listUserByRoleId (Integer id) {
+        return userRepository.findByRolesId(id);
+    }
+
+    @Override
+    public List<User> listAllByRolesRole (String role) {
+        return userRepository.findAllByRolesRole(role);
+    }
+
+
+
     public User findUserById(long id) {
         return userRepository.findById(id);
     }

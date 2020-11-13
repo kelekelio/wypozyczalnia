@@ -91,11 +91,11 @@ public class UserController {
 
         model.addAttribute("allRoles", roles);
 
-        return "user/userList";
+        return "user/profile";
     }
 
 
-    @RequestMapping({"/profile"})
+    @RequestMapping({"/myprofile"})
     public String userProfile(Model model, Principal principal) {
 
         String currentUser = principal.getName();
@@ -139,7 +139,7 @@ public class UserController {
         userService.updateUser(user1);
 
 
-        return new RedirectView("/profile");
+        return new RedirectView("/");
     }
 
 

@@ -54,16 +54,6 @@
                         <div class="welcome-text">
                             <h4>List of employees</h4>
                             <span class="ml-1">Datatable</span>
-                            <div>
-                                <a href="/employee/addNewEmployee" class="btn btn-primary">Add New Employee</a>
-                            </div>
-                            <div>
-                                <a href="/employee/addNewEmployee" class="btn btn-primary">Add New Employee</a>
-                            </div>
-                            <div>
-                                <a href="/employee/updateEmployee2" class="btn btn-primary">Update Employee2</a>
-                            </div>
-
                         </div>
                     </div>
                     <div class="col-sm-6 p-md-0 justify-content-sm-end mt-2 mt-sm-0 d-flex">
@@ -88,31 +78,31 @@
                                         <thead>
                                         <tr>
                                             <th>Employee ID</th>
-                                            <th>First name</th>
-                                            <th>Last name</th>
-                                            <th>Position</th>
-                                            <th>Branch</th>
+                                            <th>Name</th>
+                                            <th>Last Name</th>
+                                            <th>Email</th>
                                             <th>Action</th>
                                         </tr>
                                         </thead>
                                         <tbody>
-                                        <tr th:each="employee : ${employeeList}">
-                                            <td th:text="${employee.id}">Employee ID</td>
-                                            <td th:text="${employee.firstName}">First name</td>
-                                            <td th:text="${employee.lastName}">Last name</td>
-                                            <td th:text="${employee.position}">Position</td>
-                                            <td th:text="${employee.branch}">Branch</td>
-                                            <td ><a th:href="@{/showUpdateEmployeeForm/{id}(id=${employee.id})}"  class="badge badge-warning">Update</a><span>
-                                            </span><a th:href="@{/deleteEmployee/{id}(id=${employee.id})}"  class="badge badge-danger">Delete</a></td>
+                                        <tr th:each="user : ${userList}">
+                                            <td th:text="${user.id}"></td>
+                                            <td th:text="${user.lastname}"></td>
+                                            <td th:text="${user.firstname}"></td>
+                                            <td th:text="${user.email}"></td>
+                                            <td >
+                                                <a href="#" th:href="@{/profile/{id}(id=${user.id})}">
+                                                    <button type="button" class="btn btn-rounded btn-warning"><i class="fa fa-edit"></i></button>
+                                                </a>
+                                            </td>
                                         </tr>
                                         </tbody>
                                         <tfoot>
                                         <tr>
                                             <th>Employee ID</th>
-                                            <th>First name</th>
-                                            <th>Last name</th>
-                                            <th>Position</th>
-                                            <th>Branch</th>
+                                            <th>Name</th>
+                                            <th>Last Name</th>
+                                            <th>Email</th>
                                             <th>Action</th>
                                         </tr>
                                         </tfoot>
