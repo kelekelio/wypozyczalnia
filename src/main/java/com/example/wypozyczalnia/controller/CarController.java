@@ -31,18 +31,6 @@ public class CarController {
     @RequestMapping("/carList")
     public String viewCarList(Model model, Authentication auth) {
 
-        /*
-        List<Car> carList;
-
-        if(auth.getAuthorities().stream().anyMatch(ga -> ga.getAuthority().equals("ADMIN"))){
-            carList = carService.listAll();
-        }else {
-            carList = carService.listAllAvailableCars();
-        }
-
-        model.addAttribute("carList", carList);
-        */
-
         List<Car> carList = carService.listAll();
         model.addAttribute("carList", carList);
 

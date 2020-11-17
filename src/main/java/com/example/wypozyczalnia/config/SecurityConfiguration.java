@@ -43,7 +43,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception{
         http.authorizeRequests()
                 .antMatchers("/profile/**", "/userList").hasAnyAuthority("ADMIN")
-                .antMatchers("/index2", "/car/addCar/**", "/car/addCar").hasAnyAuthority("ADMIN", "EMPL", "MANAGER")
+                .antMatchers("/index2", "/car/addCar/**", "/car/addCar", "/employeeList").hasAnyAuthority("ADMIN", "EMPL", "MANAGER")
                 .antMatchers("/**").permitAll()
                 .anyRequest().authenticated()
                 .and().csrf().disable()
