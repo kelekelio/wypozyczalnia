@@ -23,6 +23,10 @@ public class MainController {
 
 
     //test pages
+    @RequestMapping(value = "booking/bookingCar", method = RequestMethod.GET)
+    public String bookingCar() {
+        return "booking/bookingCar";
+    }
     @RequestMapping(value = "/booking2", method = RequestMethod.GET)
     public String location() {
         return "booking2";

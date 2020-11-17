@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+      layout:decorate="~{layouts/layout}">
+<html lang="en">
+
+
+<head th:replace="fragments/head :: head(~{this :: title})">
+    <title>Booking Confirmation</title>
+</head>
+
+
+<body>
+
+    <!--*******************
+        Preloader start
+    ********************-->
+    <div th:replace="fragments/preloader :: preloader"></div>
+    <!--*******************
+        Preloader end
+    ********************-->
+
+
+    <!--**********************************
+        Main wrapper start
+    ***********************************-->
+    <div id="main-wrapper">
+
+        <!--**********************************
+            Nav header start
+        ***********************************-->
+        <div th:replace="fragments/header :: header"></div>
+        <!--**********************************
+            Header end ti-comment-alt
+        ***********************************-->
+
+        <!--**********************************
+            Sidebar start
+        ***********************************-->
+        <div th:replace="fragments/sidebar :: sidebar"></div>
+        <!--**********************************
+            Sidebar end
+        ***********************************-->
+
+        <!--**********************************
+            Content body start
+        ***********************************-->
+        <div class="content-body">
+            <!-- row -->
+            <div class="container-fluid">
+
+
+                    <!--**********************************
+                            PUT CONTENT HERE
+                    ***********************************-->
+<h1>Confirmation Page</h1>
+                <p th:text="'Pick-up branch: ' + ${bookingDTO.town}"  />
+                <p th:text="'from date: ' + ${bookingDTO.fromDate}"/>
+                <p th:text="'to date: ' + ${bookingDTO.fromDate}"/>
+                <p th:text="'car ID: ' + ${carDto.id}"/>
+                <p th:text="'car make: ' + ${carDto.make}"/>
+                <p th:text="'car model: ' + ${carDto.model}"/>
+                <p th:text="'car body: ' + ${carDto.body}"/>
+                <p th:text="'price: ' + ${carDto.price}"/>
+
+                <br><br>
+                <a href="/booking">Start another booking</a>
+                <!--**********************************
+                            Content body end
+                        ***********************************-->
+            </div>
+        </div>
+        <!--**********************************
+            Content body end
+        ***********************************-->
+
+
+        <!--**********************************
+            Footer start
+        ***********************************-->
+        <div th:replace="fragments/footer :: footer"></div>
+        <!--**********************************
+            Footer end
+        ***********************************-->
+
+        <!--**********************************
+           Support ticket button start
+        ***********************************-->
+
+        <!--**********************************
+           Support ticket button end
+        ***********************************-->
+
+
+    </div>
+    <!--**********************************
+        Main wrapper end
+    ***********************************-->
+
+    <!--**********************************
+        Scripts
+    ***********************************-->
+    <!-- Required vendors -->
+    <div th:replace="fragments/js :: js"></div>
+
+</body>
+
+
+</html>

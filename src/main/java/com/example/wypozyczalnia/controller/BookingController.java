@@ -2,6 +2,7 @@ package com.example.wypozyczalnia.controller;
 
 import com.example.wypozyczalnia.DTO.BookingDTO;
 import com.example.wypozyczalnia.DTO.CarDto;
+import com.example.wypozyczalnia.mappers.CarMapper;
 import com.example.wypozyczalnia.model.Branch;
 import com.example.wypozyczalnia.model.Reservation;
 import com.example.wypozyczalnia.service.BranchService;
@@ -36,49 +37,25 @@ public class BookingController {
 
         return "booking/booking";
     }
-//@RequestMapping(value = "/booking", method = RequestMethod.POST)
-//public String formSubmit(@RequestParam String town, @RequestParam LocalDateTime fromDate, @RequestParam LocalDateTime toDate, Model model) {
-//        model.addAttribute("town", town);
-//        model.addAttribute("fromDate", fromDate);
-//        model.addAttribute("toDate", toDate);
-//        return "booking/result";
-//}
 
-//    @RequestMapping(value = "/booking", method = RequestMethod.POST)
-//    public String bookingSubmit(@RequestParam String town, @RequestParam LocalDateTime fromDate, @RequestParam LocalDateTime toDate, Model model) {
-//        model.addAttribute("town", town);
-//        model.addAttribute("fromDate", fromDate);
-//        model.addAttribute("toDate", toDate);
-//        return "booking/result";
-//    }
-
-//    @PostMapping(value = "/booking")
-//    public String bookingSubmit(@RequestParam String town, @RequestParam LocalDateTime fromDate, @RequestParam LocalDateTime toDate, Model model) {
-//        model.addAttribute("town", town);
-//        model.addAttribute("fromDate", fromDate);
-//        model.addAttribute("toDate", toDate);
-//        return "booking/result";
-//    }
     @PostMapping(value = "/booking")
-    public String bookingSubmit(BookingDTO bookingDTO, Model model) throws NumberFormatException {
+    public String bookingSubmit(BookingDTO bookingDTO, CarDto carDto, Model model) throws NumberFormatException {
         model.addAttribute("bookingDTO", bookingDTO);
         model.addAttribute("carsList", carService.findAllCarForBranch(bookingDTO.getTown()));
-        model.addAttribute("carDto", new CarDto());
-        return "booking/result";
-    }
-    @PostMapping(value = "/result")
-    public String reviewBooking(BookingDTO bookingDTO, CarDto carDto, Model model) throws NumberFormatException {
-        model.addAttribute("bookingDTO", bookingDTO);
         model.addAttribute("carDto", carDto);
-        //carService.save(carService.get(carDto.getId()));
-        return "booking/reviewInputs";
+        return "booking/bookingCar";
     }
 
-
-
-//    @RequestMapping(value = {"/booking"}, method = RequestMethod.POST)
-//    public RedirectView postBooking(@ModelAttribute Reservation reservation) {
-//        reservationService.save(reservation);
-//        return new RedirectView("booking/result");
-//    }
+    @PostMapping(value = "bookingCar")
+    public String bookingConfirmation(BookingDTO bookingDTO, CarDto carDto, Model model) throws NumberFormatException {
+        model.addAttribute("bookingDTO", bookingDTO);
+        if(bookingDTO.getSelectedCarId() != null) {
+            CarDto selectedCar = CarMapper.INSTANCE
+                    .carToDto(carService.get(bookingDTO.getSelectedCarId()));
+            model.addAttribute("carDto", selectedCar);
+        } else{
+            model.addAttribute("carDto", carDto);
+        }
+        return "booking/bookingConfirmation";
+    }
 }
